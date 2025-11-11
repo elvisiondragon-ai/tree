@@ -211,6 +211,15 @@
             display: block;
         }
 
+        #page3 {
+            display: none;
+            padding: 120px 20px 50px; /* Added padding-top */
+        }
+
+        #page3.active {
+            display: block;
+        }
+
         .section {
             max-width: 1200px;
             margin: 0 auto 60px;
@@ -421,13 +430,14 @@
     <nav>
         <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/admin-image/elvisionlogo.png" alt="eL Vision Group Logo" class="nav-icon-logo">
         <div class="logo">eL Vision Group</div>
-        <button class="nav-btn" onclick="togglePage()">
+        <button id="nav-toggle-btn" class="nav-btn" onclick="togglePage('page1')" style="display: none;">
             <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
-            <span id="navText">Read Ecosystem</span>
+            <span id="navText"></span>
         </button>
+
     </nav>
 
     <!-- PAGE 1 -->
@@ -452,187 +462,396 @@
         
         <div class="motto" data-key="motto">Unlock Human Potential</div>
         
-        <button class="cta-btn" onclick="togglePage()">
+        <button class="cta-btn" onclick="togglePage('page2')">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                 <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
             <span data-key="readEcosystem">Read Ecosystem</span>
         </button>
+        <button class="cta-btn" onclick="togglePage('page3')">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span data-key="businessCircle">Business Circle</span>
+        </button>
+
     </div>
 
-    <!-- PAGE 2 -->
-    <div class="page" id="page2">
-        <div class="section">
-            <h2 data-key="miracle">Because Miracle is a Pattern</h2>
-            
-            <h3 data-key="realLife">Real Life</h3>
-            <ul>
-                <li data-key="q1">Apakah Anda sudah bekerja mati-matian, tapi hasilnya tidak pernah cukup?</li>
-                <li data-key="q2">Apakah Anda merasa hidup semakin sulit meski sudah berusaha keras?</li>
-                <li data-key="q3">Apakah Anda mulai kehilangan semangat karena masalah datang tanpa henti?</li>
-                <li data-key="q4">Apakah Anda ingin sekali tenang, tapi tak tahu caranya?</li>
-                <li data-key="q5">Apakah semua hal yang Anda cintai seakan justru menjadi sumber rasa sakit?</li>
-            </ul>
-            <p style="text-align: center; font-size: 1.3rem; margin-top: 30px; color: #ddd;"><strong data-key="lifePattern">Kehidupan memiliki Pola</strong></p>
-        </div>
+        <!-- PAGE 2 -->
 
-        <div class="section">
-            <h3 data-key="traumaTitle">Trauma Mencoba - Ketika Tubuh Sudah Menolak</h3>
-            <p data-key="traumaP1">Pernahkah kamu ada di titik di mana kamu takut untuk mencoba lagi? Bukan karena malas. Tapi karena trauma. Trauma saat usahamu yang paling maksimal justru menjadi pukulan paling telak yang membuat keadaan semakin buruk.</p>
-            
-            <p data-key="traumaP2">Rasa lelah paling menyakitkan bukanlah lelah karena bekerja keras. Tapi lelah saat menyadari semua kerja kerasmu… justru membuatmu lebih jauh dari tujuan. Kamu sudah melakukan segalanya, tapi kenapa rasanya seperti berlari di atas treadmill sambil menggali lubang di bawah kakimu?</p>
-            
-            <p data-key="traumaP3">Itu karena kamu berusaha keras saat hati dan pikiran masih tegang. <strong>Berhentilah. Itu hanya buang tenaga dan modal.</strong> Tenangkan dulu sesegera mungkin, karena saat ini… Anda hanya berusaha menggali lubang lebih dalam.</p>
-            
-            <p data-key="traumaP4"><strong>Kamu terperangkap di lumpur hisap.</strong></p>
-            
-            <p data-key="traumaP5">Secara naluriah, kamu bergerak sekuat tenaga, berharap bisa bebas. Tapi setiap gerakan panik itu justru menarikmu lebih cepat ke dalam. Semakin kamu berjuang, semakin cepat kamu tenggelam.</p>
-        </div>
+        <div class="page" id="page2">
 
-        <div class="section">
-            <h3 data-key="trapTitle">Anda Terjebak dalam Lumpur Hisap Stres & Kegagalan? Lingkungan Anda Justru Menikmatinya!</h3>
-            <p data-key="trapP1">Anda berjuang keras, tapi semakin bergerak, semakin dalam terperosok. Stres tak berujung, kegagalan terus menghantam, dan dunia seakan bersekongkol menjatuhkan Anda. Ini bukan paranoia—lingkungan Andalah biang kerusakannya.</p>
-            
-            <p data-key="trapP2"><strong>Lihatlah:</strong></p>
-            <ul>
-                <li data-key="trapL1">Saat Anda sukses, mereka iri dan menusuk dari belakang.</li>
-                <li data-key="trapL2">Saat Anda jatuh, mereka pura-pura simpati, padahal dalam hati bersorak.</li>
-                <li data-key="trapL3">Mereka menghisap energi, mematikan peluang, dan merusak mental Anda—sampai-sampai kerugiannya bisa ratusan juta rupiah!</li>
-            </ul>
-            
-            <p data-key="trapP3"><strong>Solusinya? eL Vision Group (Ebook + Audio + Komunitas).</strong> Ini bukan sekadar "biaya", tapi investasi termurah untuk kabur dari neraka toxic ini. Di sini, Anda dapat:</p>
-            <ul>
-                <li data-key="trapL4">Lingkungan suportif yang merayakan kesuksesan Anda.</li>
-                <li data-key="trapL5">Energi positif untuk membuka rezeki & kesehatan mental.</li>
-                <li data-key="trapL6">Strategi nyata keluar dari sabotase diri & lingkungan.</li>
-            </ul>
-            
-            <p style="text-align: center; margin-top: 30px;"><strong data-key="choice">Pilih sekarang:</strong><br>
-            <span data-key="choice1">Bertahan di lumpur hisap, dikhianati terus?</span><br>
-            <span data-key="choice2">Atau bergabung dengan kami, bangkit, dan menang?</span><br><br>
-            <span style="color: #ddd; font-size: 1.3rem;" data-key="decision">Waktunya putuskan nasib Anda sendiri!</span></p>
-        </div>
+            <div class="section">
 
-        <div class="section">
-            <h3 data-key="gratitudeTitle">Apa itu Bersyukur?</h3>
-            <p data-key="gratitudeP1">Kami meyakini bahwa syukur bukan sekadar ucapan. Jika tubuh tegang, mata penuh stres, dan kepala terasa berat, itu adalah tanda tubuh sedang kufur meski lidah mengucap syukur.</p>
-            
-            <p data-key="gratitudeP2">Di eL Vision Group, Founder menciptakan <strong>teknik syukur hingga level sel</strong>, di mana tubuh Anda yang menyatakan syukur, bukan hanya lidah.</p>
-            
-            <p data-key="gratitudeP3">Inilah alasan mengapa metode ini sangat powerful – bukan magic, tapi murni sains.</p>
-            
-            <h3 style="margin-top: 40px;" data-key="miraclePattern">Pola Keajaiban</h3>
-            <p data-key="miracleP1">Saat menjalankan eL Vision Project, Keajaiban menjadi sesuatu yang rutin terjadi. Perpaduan antara Audio Canggih yang langsung hack sistem saraf kita dan langsung relax tanpa banyak kata.</p>
-        </div>
+                <h2 data-key="miracle">Because Miracle is a Pattern</h2>
 
-        <div class="section">
-            <h2 data-key="testimony">Testimony</h2>
-            <div class="testimonials">
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/DRVIDEO_WA.jpg">
-                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/HABIBVIDEO_WA.jpg">
-                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/FELVIDEO_WA.jpg">
-                        <source src="httpshttps://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/VIOVIDEO_WA.jpg">
-                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/LENA_WA.jpg">
-                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/arif.jpg">
-                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <video controls preload="metadata" poster="thumbnails/AGUS_WA.jpg">
-                        <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="testimony">
-                    <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.png" alt="Testimony Image">
-                </div>
-                <div class="testimony">
-                    <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.jpeg" alt="Testimony Image">
-                </div>
-                <div class="testimony">
-                    <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.jpeg" alt="Testimony Image">
-                </div>
+                
+
+                <h3 data-key="realLife">Real Life</h3>
+
+                <ul>
+
+                    <li data-key="q1">Apakah Anda sudah bekerja mati-matian, tapi hasilnya tidak pernah cukup?</li>
+
+                    <li data-key="q2">Apakah Anda merasa hidup semakin sulit meski sudah berusaha keras?</li>
+
+                    <li data-key="q3">Apakah Anda mulai kehilangan semangat karena masalah datang tanpa henti?</li>
+
+                    <li data-key="q4">Apakah Anda ingin sekali tenang, tapi tak tahu caranya?</li>
+
+                    <li data-key="q5">Apakah semua hal yang Anda cintai seakan justru menjadi sumber rasa sakit?</li>
+
+                </ul>
+
+                <p style="text-align: center; font-size: 1.3rem; margin-top: 30px; color: #ddd;"><strong data-key="lifePattern">Kehidupan memiliki Pola</strong></p>
+
             </div>
-        </div>
 
-        <div class="section">
-            <h3 data-key="saveAssets">Selamatkan Ratusan Juta Aset Anda, Bisnis Anda, Dari Mental Anda!</h3>
-            <p style="text-align: center; font-size: 1.2rem; margin: 20px 0;" data-key="smartIntervention"><strong>Intervensi Pintar Sistem Saraf yang Membajak Kesuksesan Anda</strong></p>
-            <p style="text-align: center; font-size: 1.1rem; margin: 20px 0;" data-key="proof">Kami Tidak Jual Janji Bukti Bicara: Ribuan Anggota + Testimony Nyata</p>
-            
-            <h3 style="text-align: center; margin: 40px 0;" data-key="brutalBenefits">Brutal Benefits Yang Akan Anda Dapatkan</h3>
-            
-            <div class="benefits">
-                <div class="benefit-card">
-                    <h4 data-key="benefit1Title">🛑 Stop Sabotase Diri</h4>
-                    <p data-key="benefit1P">Intervensi canggih pada sistem saraf yang membajak kesuksesan Anda selama ini</p>
-                </div>
-                <div class="benefit-card">
-                    <h4 data-key="benefit2Title">🚪 Escape Toxic Environment</h4>
-                    <p data-key="benefit2P">Komunitas yang TIDAK akan menusuk dari belakang ketika Anda sukses</p>
-                </div>
-                <div class="benefit-card">
-                    <h4 data-key="benefit3Title">📡 Break Poverty Frequency</h4>
-                    <p data-key="benefit3P">Rubah sinyal kemiskinan menjadi sinyal kelimpahan yang menarik rezeki</p>
-                </div>
-                <div class="benefit-card">
-                    <h4 data-key="benefit4Title">💀 Kill Trauma Pattern</h4>
-                    <p data-key="benefit4P">Reset mental dari "mode perang" ke "mode menerima" yang mengalir</p>
-                </div>
-                <div class="benefit-card">
-                    <h4 data-key="benefit5Title">⚡ Nerve Hack Technology</h4>
-                    <p data-key="benefit5P">Paksa tubuh relax tanpa negosiasi menggunakan frekuensi canggih</p>
-                </div>
+    
+
+            <div class="section">
+
+                <h3 data-key="traumaTitle">Trauma Mencoba - Ketika Tubuh Sudah Menolak</h3>
+
+                <p data-key="traumaP1">Pernahkah kamu ada di titik di mana kamu takut untuk mencoba lagi? Bukan karena malas. Tapi karena trauma. Trauma saat usahamu yang paling maksimal justru menjadi pukulan paling telak yang membuat keadaan semakin buruk.</p>
+
+                
+
+                <p data-key="traumaP2">Rasa lelah paling menyakitkan bukanlah lelah karena bekerja keras. Tapi lelah saat menyadari semua kerja kerasmu… justru membuatmu lebih jauh dari tujuan. Kamu sudah melakukan segalanya, tapi kenapa rasanya seperti berlari di atas treadmill sambil menggali lubang di bawah kakimu?</p>
+
+                
+
+                <p data-key="traumaP3">Itu karena kamu berusaha keras saat hati dan pikiran masih tegang. <strong>Berhentilah. Itu hanya buang tenaga dan modal.</strong> Tenangkan dulu sesegera mungkin, karena saat ini… Anda hanya berusaha menggali lubang lebih dalam.</p>
+
+                
+
+                <p data-key="traumaP4"><strong>Kamu terperangkap di lumpur hisap.</strong></p>
+
+                
+
+                <p data-key="traumaP5">Secara naluriah, kamu bergerak sekuat tenaga, berharap bisa bebas. Tapi setiap gerakan panik itu justru menarikmu lebih cepat ke dalam. Semakin kamu berjuang, semakin cepat kamu tenggelam.</p>
+
             </div>
+
+    
+
+            <div class="section">
+
+                <h3 data-key="trapTitle">Anda Terjebak dalam Lumpur Hisap Stres & Kegagalan? Lingkungan Anda Justru Menikmatinya!</h3>
+
+                <p data-key="trapP1">Anda berjuang keras, tapi semakin bergerak, semakin dalam terperosok. Stres tak berujung, kegagalan terus menghantam, dan dunia seakan bersekongkol menjatuhkan Anda. Ini bukan paranoia—lingkungan Andalah biang kerusakannya.</p>
+
+                
+
+                <p data-key="trapP2"><strong>Lihatlah:</strong></p>
+
+                <ul>
+
+                    <li data-key="trapL1">Saat Anda sukses, mereka iri dan menusuk dari belakang.</li>
+
+                    <li data-key="trapL2">Saat Anda jatuh, mereka pura-pura simpati, padahal dalam hati bersorak.</li>
+
+                    <li data-key="trapL3">Mereka menghisap energi, mematikan peluang, dan merusak mental Anda—sampai-sampai kerugiannya bisa ratusan juta rupiah!</li>
+
+                </ul>
+
+                
+
+                <p data-key="trapP3"><strong>Solusinya? eL Vision Group (Ebook + Audio + Komunitas).</strong> Ini bukan sekadar "biaya", tapi investasi termurah untuk kabur dari neraka toxic ini. Di sini, Anda dapat:</p>
+
+                <ul>
+
+                    <li data-key="trapL4">Lingkungan suportif yang merayakan kesuksesan Anda.</li>
+
+                    <li data-key="trapL5">Energi positif untuk membuka rezeki & kesehatan mental.</li>
+
+                    <li data-key="trapL6">Strategi nyata keluar dari sabotase diri & lingkungan.</li>
+
+                </ul>
+
+                
+
+                <p style="text-align: center; margin-top: 30px;"><strong data-key="choice">Pilih sekarang:</strong><br>
+
+                <span data-key="choice1">Bertahan di lumpur hisap, dikhianati terus?</span><br>
+
+                <span data-key="choice2">Atau bergabung dengan kami, bangkit, dan menang?</span><br><br>
+
+                <span style="color: #ddd; font-size: 1.3rem;" data-key="decision">Waktunya putuskan nasib Anda sendiri!</span></p>
+
+            </div>
+
+    
+
+            <div class="section">
+
+                <h3 data-key="gratitudeTitle">Apa itu Bersyukur?</h3>
+
+                <p data-key="gratitudeP1">Kami meyakini bahwa syukur bukan sekadar ucapan. Jika tubuh tegang, mata penuh stres, dan kepala terasa berat, itu adalah tanda tubuh sedang kufur meski lidah mengucap syukur.</p>
+
+                
+
+                <p data-key="gratitudeP2">Di eL Vision Group, Founder menciptakan <strong>teknik syukur hingga level sel</strong>, di mana tubuh Anda yang menyatakan syukur, bukan hanya lidah.</p>
+
+                
+
+                <p data-key="gratitudeP3">Inilah alasan mengapa metode ini sangat powerful – bukan magic, tapi murni sains.</p>
+
+                
+
+                <h3 style="margin-top: 40px;" data-key="miraclePattern">Pola Keajaiban</h3>
+
+                <p data-key="miracleP1">Saat menjalankan eL Vision Project, Keajaiban menjadi sesuatu yang rutin terjadi. Perpaduan antara Audio Canggih yang langsung hack sistem saraf kita dan langsung relax tanpa banyak kata.</p>
+
+            </div>
+
+    
+
+            <div class="section">
+
+                <h2 data-key="testimony">Testimony</h2>
+
+                <div class="testimonials">
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/DRVIDEO_WA.jpg">
+
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/HABIBVIDEO_WA.jpg">
+
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/FELVIDEO_WA.jpg">
+
+                            <source src="httpshttps://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/VIOVIDEO_WA.jpg">
+
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/LENA_WA.jpg">
+
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/arif.jpg">
+
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <video controls preload="metadata" poster="thumbnails/AGUS_WA.jpg">
+
+                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4" type="video/mp4">
+
+                            Your browser does not support the video tag.
+
+                        </video>
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.png" alt="Testimony Image">
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.jpeg" alt="Testimony Image">
+
+                    </div>
+
+                    <div class="testimony">
+
+                        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.jpeg" alt="Testimony Image">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    
+
+            <div class="section">
+
+                <h3 data-key="saveAssets">Selamatkan Ratusan Juta Aset Anda, Bisnis Anda, Dari Mental Anda!</h3>
+
+                <p style="text-align: center; font-size: 1.2rem; margin: 20px 0;" data-key="smartIntervention"><strong>Intervensi Pintar Sistem Saraf yang Membajak Kesuksesan Anda</strong></p>
+
+                <p style="text-align: center; font-size: 1.1rem; margin: 20px 0;" data-key="proof">Kami Tidak Jual Janji Bukti Bicara: Ribuan Anggota + Testimony Nyata</p>
+
+                
+
+                <h3 style="text-align: center; margin: 40px 0;" data-key="brutalBenefits">Brutal Benefits Yang Akan Anda Dapatkan</h3>
+
+                
+
+                <div class="benefits">
+
+                    <div class="benefit-card">
+
+                        <h4 data-key="benefit1Title">🛑 Stop Sabotase Diri</h4>
+
+                        <p data-key="benefit1P">Intervensi canggih pada sistem saraf yang membajak kesuksesan Anda selama ini</p>
+
+                    </div>
+
+                    <div class="benefit-card">
+
+                        <h4 data-key="benefit2Title">🚪 Escape Toxic Environment</h4>
+
+                        <p data-key="benefit2P">Komunitas yang TIDAK akan menusuk dari belakang ketika Anda sukses</p>
+
+                    </div>
+
+                    <div class="benefit-card">
+
+                        <h4 data-key="benefit3Title">📡 Break Poverty Frequency</h4>
+
+                        <p data-key="benefit3P">Rubah sinyal kemiskinan menjadi sinyal kelimpahan yang menarik rezeki</p>
+
+                    </div>
+
+                    <div class="benefit-card">
+
+                        <h4 data-key="benefit4Title">💀 Kill Trauma Pattern</h4>
+
+                        <p data-key="benefit4P">Reset mental dari "mode perang" ke "mode menerima" yang mengalir</p>
+
+                    </div>
+
+                    <div class="benefit-card">
+
+                        <h4 data-key="benefit5Title">⚡ Nerve Hack Technology</h4>
+
+                        <p data-key="benefit5P">Paksa tubuh relax tanpa negosiasi menggunakan frekuensi canggih</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    
+
+            <div class="section consequences">
+
+                <h3 data-key="consequencesTitle">Konsekuensi</h3>
+
+                <p><strong data-key="howMuch">Berapa banyak:</strong></p>
+
+                <ul>
+
+                    <li data-key="consequence1">Tenaga Yang anda habiskan untuk menemukan solusi</li>
+
+                    <li data-key="consequence2">Uang yang sudah anda habiskan untuk liburan agar tenang</li>
+
+                    <li data-key="consequence3">Solusi yang anda bayarkan agar bisa melelehkan masalah</li>
+
+                    <li data-key="consequence4">Kehilangan orang orang yang anda perdulikan hanya karena ketidak mampuan anda</li>
+
+                    <li data-key="consequence5">Hati yang semakin kehilangan tujuan hidup ketika semua usaha terasa melawan anda</li>
+
+                </ul>
+
+                <p style="text-align: center; font-size: 1.2rem; margin-top: 30px; color: #ffcccc;"><strong data-key="sacrifice">Setiap hari berlalu sebanyak itulah yang anda korbankan ketika menjalani semua tanpa arah yang tepat</strong></p>
+
+            </div>
+
+    
+
+            <div class="final-cta">
+
+                <h2 data-key="decisionTime">Waktunya Ambil Keputusan</h2>
+
+                <p style="font-size: 1.3rem; margin-bottom: 40px;" data-key="finalP">Berapa lama lagi Anda akan membiarkan sistem saraf yang rusak menghancurkan masa depan Anda?</p>
+
+                            <a href="https://app.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="enterEcosystem">MASUK KE ECOSYSTEM</a>
+
+            </div>
+
         </div>
 
-        <div class="section consequences">
-            <h3 data-key="consequencesTitle">Konsekuensi</h3>
-            <p><strong data-key="howMuch">Berapa banyak:</strong></p>
-            <ul>
-                <li data-key="consequence1">Tenaga Yang anda habiskan untuk menemukan solusi</li>
-                <li data-key="consequence2">Uang yang sudah anda habiskan untuk liburan agar tenang</li>
-                <li data-key="consequence3">Solusi yang anda bayarkan agar bisa melelehkan masalah</li>
-                <li data-key="consequence4">Kehilangan orang orang yang anda perdulikan hanya karena ketidak mampuan anda</li>
-                <li data-key="consequence5">Hati yang semakin kehilangan tujuan hidup ketika semua usaha terasa melawan anda</li>
-            </ul>
-            <p style="text-align: center; font-size: 1.2rem; margin-top: 30px; color: #ffcccc;"><strong data-key="sacrifice">Setiap hari berlalu sebanyak itulah yang anda korbankan ketika menjalani semua tanpa arah yang tepat</strong></p>
-        </div>
+    
 
-        <div class="final-cta">
-            <h2 data-key="decisionTime">Waktunya Ambil Keputusan</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 40px;" data-key="finalP">Berapa lama lagi Anda akan membiarkan sistem saraf yang rusak menghancurkan masa depan Anda?</p>
-            <a href="https://app.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="enterEcosystem">MASUK KE ECOSYSTEM</a>
-        </div>
-    </div>
+        <!-- PAGE 3 -->
+
+        <div class="page" id="page3">
+
+            <div class="section">
+
+                <h2 data-key="elVisionBusinessCircle">eL Vision Business Circle</h2>
+
+                <p>Kami percaya bahwa kesuksesan bisnis tidak hanya ditentukan oleh teknik atau strategi eksternal, tetapi terutama oleh keyakinan, mentalitas, dan spirit sang pengusaha. Tiga hal ini menyumbang lebih dari 60% hasil kerja nyata.</p>
+
+                <p>Program ini khusus bagi para pengusaha berpengalaman, yang telah melalui pasang surut dunia bisnis dan menyadari betapa pentingnya kekuatan keyakinan serta berbahayanya keraguan.</p>
+
+                <p>Kami tidak menerima peserta yang masih berada pada pola pikir karyawan, karena mereka terbiasa dengan kepastian gaji dan tidak memahami bahwa dalam bisnis, keyakinan dan mentalitas kuat adalah napas utama untuk bertahan dan berkembang.</p>
+
+                <p>Circle ini dirancang bagi Anda yang telah memahami bahwa kualitas ketenangan batin dan keyakinan diri berpengaruh langsung pada hasil bisnis.</p>
+
+                            <p>Dengan sistem profit sharing yang besar, Anda hanya perlu menanggung biaya iklan, sementara tim kami akan mengarahkan strategi agar bisnis Anda produktif, efisien, dan laku keras — sehingga modal yang Anda keluarkan berkembang menjadi keuntungan berlipat.</p>
+
+                        </div>
+
+                        <div class="final-cta">
+
+                            <a href="https://dev.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="goToDev">Go to Dev</a>
+
+                        </div>
+
+                    </div>
 
     <div class="language-switcher">
         <div class="globe-icon" onclick="toggleLanguageDropdown()"></div>
@@ -671,22 +890,31 @@
         }
 
         // Toggle between pages
-        function togglePage() {
+        function togglePage(targetPageId) {
             const page1 = document.getElementById('page1');
             const page2 = document.getElementById('page2');
+            const page3 = document.getElementById('page3'); // Get page3
+            const navBtn = document.getElementById('nav-toggle-btn');
             const navText = document.getElementById('navText');
-            
-            if (page1.style.display !== 'none') {
-                page1.style.display = 'none';
+
+            // Hide all pages first
+            page1.style.display = 'none';
+            page2.classList.remove('active');
+            page3.classList.remove('active'); // Hide page3
+
+            if (targetPageId === 'page1') {
+                page1.style.display = 'flex';
+                navBtn.style.display = 'none'; // Hide button when on home
+            } else if (targetPageId === 'page2') {
                 page2.classList.add('active');
                 navText.textContent = 'Back to Home';
-                window.scrollTo(0, 0);
-            } else {
-                page1.style.display = 'flex';
-                page2.classList.remove('active');
-                navText.textContent = 'Read Ecosystem';
-                window.scrollTo(0, 0);
+                navBtn.style.display = 'flex'; // Show button
+            } else if (targetPageId === 'page3') { // Handle page3
+                page3.classList.add('active');
+                navText.textContent = 'Back to Home';
+                navBtn.style.display = 'flex'; // Show button
             }
+            window.scrollTo(0, 0);
         }
 
         // Language Switcher
@@ -703,6 +931,7 @@
                 p8: "We hold a deep conviction that true progress is progress felt by all, not just a select few. This is why our greatest dedication is to build and provide a <strong>Completely Free Community Development Ecosystem</strong>. We take the best knowledge, systems, and technology that have been tested at the highest levels, and we democratize them for the public. Because the best future is one where every individual has the tools to advance and contribute.",
                 motto: "Unlock Human Potential",
                 readEcosystem: "Read Ecosystem",
+                businessCircle: "Business Circle",
                 miracle: "Because Miracle is a Pattern",
                 realLife: "Real Life",
                 q1: "Have you worked to death, but the results are never enough?",
@@ -762,7 +991,8 @@
                 sacrifice: "<strong>Every day that passes is how much you sacrifice when you live without the right direction</strong>",
                 decisionTime: "Time to Make a Decision",
                 finalP: "How much longer will you let a damaged nervous system destroy your future?",
-                enterEcosystem: "ENTER THE ECOSYSTEM"
+                enterEcosystem: "ENTER THE ECOSYSTEM",
+                goToDev: "Go to Dev"
             },
             id: {
                 title: "Buka Potensi 10x Anda",
@@ -776,6 +1006,7 @@
                 p8: "Kami memegang keyakinan mendalam bahwa kemajuan sejati adalah kemajuan yang dirasakan oleh semua, bukan hanya segelintir orang. Inilah sebabnya, dedikasi terbesar kami adalah membangun dan memberikan <strong>Ekosistem Pengembangan Masyarakat yang Sepenuhnya Gratis</strong>. Kami mengambil pengetahuan, sistem, dan teknologi terbaik yang telah teruji di level tertinggi, dan kami mendemokratisasikannya untuk publik. Karena masa depan terbaik adalah masa depan di mana setiap individu memiliki alat untuk maju dan berkontribusi.",
                 motto: "Buka Potensi Manusia",
                 readEcosystem: "Baca Ekosistem",
+                businessCircle: "Lingkaran Bisnis",
                 miracle: "Karena Keajaiban adalah Pola",
                 realLife: "Kehidupan Nyata",
                 q1: "Apakah Anda sudah bekerja mati-matian, tapi hasilnya tidak pernah cukup?",
@@ -835,7 +1066,8 @@
                 sacrifice: "<strong>Setiap hari berlalu sebanyak itulah yang anda korbankan ketika menjalani semua tanpa arah yang tepat</strong>",
                 decisionTime: "Waktunya Ambil Keputusan",
                 finalP: "Berapa lama lagi Anda akan membiarkan sistem saraf yang rusak menghancurkan masa depan Anda?",
-                enterEcosystem: "MASUK KE EKOSISTEM"
+                enterEcosystem: "MASUK KE EKOSISTEM",
+                goToDev: "Pergi ke Dev"
             },
             ar: {
                 title: "أطلق العنان لإمكانياتك 10x",
@@ -849,6 +1081,7 @@
                 p8: "لدينا قناعة عميقة بأن التقدم الحقيقي هو التقدم الذي يشعر به الجميع ، وليس فقط قلة مختارة. هذا هو السبب في أن أكبر تفانينا هو بناء وتوفير <strong>نظام بيئي مجاني تمامًا لتنمية المجتمع</strong>. نحن نأخذ أفضل المعارف والأنظمة والتكنولوجيا التي تم اختبارها على أعلى المستويات ، ونجعلها ديمقراطية للجمهور. لأن أفضل مستقبل هو المستقبل الذي يمتلك فيه كل فرد الأدوات اللازمة للتقدم والمساهمة.",
                 motto: "أطلق العنان للإمكانات البشرية",
                 readEcosystem: "اقرأ النظام البيئي",
+                businessCircle: "دائرة الأعمال",
                 miracle: "لأن المعجزة نمط",
                 realLife: "الحياة الحقيقية",
                 q1: "هل عملت حتى الموت ، لكن النتائج لم تكن كافية أبدًا؟",
@@ -908,7 +1141,8 @@
                 sacrifice: "<strong>كل يوم يمر هو مقدار ما تضحي به عندما تعيش بدون الاتجاه الصحيح</strong>",
                 decisionTime: "حان وقت اتخاذ القرار",
                 finalP: "إلى متى ستدع الجهاز العصبي التالف يدمر مستقبلك؟",
-                enterEcosystem: "ادخل إلى النظام البيئي"
+                enterEcosystem: "ادخل إلى النظام البيئي",
+                goToDev: "اذهب إلى ديف"
             }
         };
 
