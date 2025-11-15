@@ -355,6 +355,14 @@
             background: linear-gradient(135deg, #440044, #774477);
         }
 
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            margin-top: 20px;
+        }
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #128C7E, #25D366);
+        }
+
         .consequences {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -366,6 +374,15 @@
             bottom: 20px;
             right: 20px;
             z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .whatsapp-icon img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
         }
 
         .language-switcher .globe-icon {
@@ -816,9 +833,8 @@
                 <h2 data-key="decisionTime">Waktunya Ambil Keputusan</h2>
 
                 <p style="font-size: 1.3rem; margin-bottom: 40px;" data-key="finalP">Berapa lama lagi Anda akan membiarkan sistem saraf yang rusak menghancurkan masa depan Anda?</p>
-
-                            <a href="https://app.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="enterEcosystem">MASUK KE ECOSYSTEM</a>
-
+                <a href="https://app.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="enterEcosystem">MASUK KE ECOSYSTEM</a>
+                <a href="https://wa.me/62895325633487?text=Kak%20mau%20VVIP%201%3A1" target="_blank" class="ecosystem-btn whatsapp-btn" data-key="vip1on1">Apply for VIP 1:1</a>
             </div>
 
         </div>
@@ -855,6 +871,9 @@
 
     <div class="language-switcher">
         <div class="globe-icon" onclick="toggleLanguageDropdown()"></div>
+        <a href="https://wa.me/62895325633487?text=Kak%20mau%20VVIP%201%3A1" target="_blank" class="whatsapp-icon">
+            <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+        </a>
         <div class="language-dropdown" id="languageDropdown">
             <a href="#" onclick="changeLanguage('en')">English</a>
             <a href="#" onclick="changeLanguage('id')">Indonesia</a>
