@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey VIP 1:1</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .option input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #1EBE5A;
+        }
+        .vip-note {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 15px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-left: 3px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Survey VIP 1:1</h1>
+        <form id="surveyForm">
+            <div class="question">
+                <label>Berapa kisaran pendapatan Anda saat ini?</label>
+                <div class="option"><input type="radio" name="pendapatan" value="Di bawah 30 juta/bulan"> Di bawah 30 juta/bulan</div>
+                <div class="option"><input type="radio" name="pendapatan" value="30–50 juta/bulan"> 30–50 juta/bulan</div>
+                <div class="option"><input type="radio" name="pendapatan" value="50–100 juta/bulan"> 50–100 juta/bulan</div>
+                <div class="option"><input type="radio" name="pendapatan" value="Di atas 100 juta/bulan"> Di atas 100 juta/bulan</div>
+            </div>
+
+            <div class="question">
+                <label>Apa posisi atau tanggung jawab utama Anda dalam pekerjaan?</label>
+                <div class="option"><input type="radio" name="posisi" value="Founder / Business Owner"> Founder / Business Owner</div>
+                <div class="option"><input type="radio" name="posisi" value="C-Level (CEO, COO, CTO, CFO)"> C-Level (CEO, COO, CTO, CFO)</div>
+                <div class="option"><input type="radio" name="posisi" value="Senior Manager"> Senior Manager</div>
+                <div class="option"><input type="radio" name="posisi" value="Profesional Berpenghasilan Tinggi"> Profesional Berpenghasilan Tinggi</div>
+                <div class="option">
+                    <input type="radio" name="posisi" value="Lainnya"> Lainnya
+                    <input type="text" name="posisi_lainnya" placeholder="Sebutkan posisi lainnya">
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Apa yang Anda cari dari program ini?</label>
+                <div class="option"><input type="radio" name="harapan" value="Pikiran lebih jernih & stabil"> Pikiran lebih jernih & stabil</div>
+                <div class="option"><input type="radio" name="harapan" value="Pengurangan stres secara cepat"> Pengurangan stres secara cepat</div>
+                <div class="option"><input type="radio" name="harapan" value="Ketajaman dalam pengambilan keputusan"> Ketajaman dalam pengambilan keputusan</div>
+                <div class="option"><input type="radio" name="harapan" value="Ketenangan batin untuk performa tinggi"> Ketenangan batin untuk performa tinggi</div>
+                <div class="option">
+                    <input type="radio" name="harapan" value="Lainnya"> Lainnya
+                    <input type="text" name="harapan_lainnya" placeholder="Sebutkan harapan lainnya">
+                </div>
+            </div>
+
+            <div class="question">
+                <label>Seberapa siap Anda mencoba 2 minggu program gratis ini yang hasilnya dapat dirasakan instan?</label>
+                <div class="option"><input type="radio" name="kesiapan" value="Sangat siap"> Sangat siap</div>
+                <div class="option"><input type="radio" name="kesiapan" value="Siap"> Siap</div>
+                <div class="option"><input type="radio" name="kesiapan" value="Pertimbangkan dulu"> Pertimbangkan dulu</div>
+            </div>
+
+            <div class="question">
+                <label>Setelah program ini, output goal apa yang Anda harapkan?</label>
+                <p class="vip-note">
+                    <strong>VIP 1:1 adalah program eksklusif untuk profesional berpenghasilan tinggi dengan tekanan dan tanggung jawab besar.</strong>
+                </p>
+                <textarea name="goal" placeholder="Jawab esai di sini"></textarea>
+            </div>
+
+            <button type="button" onclick="submitSurvey()" class="submit-btn">Submit via WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        function submitSurvey() {
+            const form = document.getElementById('surveyForm');
+            const formData = new FormData(form);
+            let data = {};
+            let text = "Kak Renata saya sudah isi survey 1:1 VIP\n\n";
+
+            const pendapatan = formData.get('pendapatan');
+            if (pendapatan) {
+                text += "Berapa kisaran pendapatan Anda saat ini?\n- " + pendapatan + "\n\n";
+            }
+
+            let posisi = formData.get('posisi');
+            if (posisi) {
+                if (posisi === 'Lainnya') {
+                    posisi = formData.get('posisi_lainnya') || 'Lainnya';
+                }
+                text += "Apa posisi atau tanggung jawab utama Anda dalam pekerjaan?\n- " + posisi + "\n\n";
+            }
+
+            let harapan = formData.get('harapan');
+            if (harapan) {
+                if (harapan === 'Lainnya') {
+                    harapan = formData.get('harapan_lainnya') || 'Lainnya';
+                }
+                text += "Apa yang Anda cari dari program ini?\n- " + harapan + "\n\n";
+            }
+            
+            const kesiapan = formData.get('kesiapan');
+            if (kesiapan) {
+                text += "Seberapa siap Anda mencoba 2 minggu program gratis ini yang hasilnya dapat dirasakan instan?\n- " + kesiapan + "\n\n";
+            }
+
+            const goal = formData.get('goal');
+            if (goal) {
+                text += "Setelah program ini, output goal apa yang Anda harapkan?\n- " + goal + "\n\n";
+            }
+
+            const baseURL = "https://wa.me/62895325633487";
+            const encodedText = encodeURIComponent(text);
+            const finalURL = `${baseURL}?text=${encodedText}`;
+
+            window.open(finalURL, '_blank');
+        }
+    </script>
+</body>
+</html>
