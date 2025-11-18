@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Survey</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #1a1a1a;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .option input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #1EBE5A;
+        }
+        .final-statement {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e9f7ef;
+            border-left: 5px solid #25D366;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .final-statement strong {
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Second Survey</h1>
+        <form id="surveyForm2">
+            <h2>1. Pendapatan & Tekanan Kerja</h2>
+            <div class="question">
+                <label>Bagaimana hubungan antara pendapatan Anda saat ini dan tingkat tekanan yang Anda rasakan?</label>
+                <div class="option"><input type="radio" name="pendapatan_tekanan" value="Pendapatan tinggi → tekanan sangat tinggi"> Pendapatan tinggi → tekanan sangat tinggi</div>
+                <div class="option"><input type="radio" name="pendapatan_tekanan" value="Pendapatan stabil → tekanan meningkat"> Pendapatan stabil → tekanan meningkat</div>
+                <div class="option"><input type="radio" name="pendapatan_tekanan" value="Pendapatan menurun → tekanan meningkat drastis"> Pendapatan menurun → tekanan meningkat drastis</div>
+                <div class="option"><input type="radio" name="pendapatan_tekanan" value="Fluktuatif / tidak menentu"> Fluktuatif / tidak menentu</div>
+                <div class="option">
+                    <input type="radio" name="pendapatan_tekanan" value="Lainnya"> Lainnya
+                    <input type="text" name="pendapatan_tekanan_lainnya" placeholder="Jelaskan lainnya">
+                </div>
+            </div>
+
+            <h2>2. Arah Finansial 6–12 Bulan Terakhir</h2>
+            <div class="question">
+                <label>Dalam 6–12 bulan terakhir, kondisi finansial Anda cenderung:</label>
+                <div class="option"><input type="radio" name="arah_finansial" value="Meningkat"> Meningkat</div>
+                <div class="option"><input type="radio" name="arah_finansial" value="Stabil"> Stabil</div>
+                <div class="option"><input type="radio" name="arah_finansial" value="Menurun"> Menurun</div>
+                <div class="option"><input type="radio" name="arah_finansial" value="Fluktuatif"> Fluktuatif</div>
+            </div>
+            <div class="question">
+                <label>Apa penyebab utamanya?</label>
+                <textarea name="penyebab_finansial" placeholder="Jawab singkat"></textarea>
+            </div>
+
+            <h2>3. Tantangan Mental yang Paling Menghambat Kinerja</h2>
+            <div class="question">
+                <div class="option"><input type="radio" name="tantangan_mental" value="Overthinking keputusan besar"> Overthinking keputusan besar</div>
+                <div class="option"><input type="radio" name="tantangan_mental" value="Mental kabur / sulit fokus"> Mental kabur / sulit fokus</div>
+                <div class="option"><input type="radio" name="tantangan_mental" value="Tekanan tanggung jawab tinggi"> Tekanan tanggung jawab tinggi</div>
+                <div class="option"><input type="radio" name="tantangan_mental" value="Stress finansial"> Stress finansial</div>
+                <div class="option"><input type="radio" name="tantangan_mental" value="Takut salah langkah"> Takut salah langkah</div>
+                <div class="option">
+                    <input type="radio" name="tantangan_mental" value="Lainnya"> Lainnya
+                    <input type="text" name="tantangan_mental_lainnya" placeholder="Sebutkan lainnya">
+                </div>
+            </div>
+
+            <h2>4. Dampak Terbesar ke Bisnis / Karier</h2>
+            <div class="question">
+                <div class="option"><input type="radio" name="dampak_bisnis_karier" value="Penurunan performa"> Penurunan performa</div>
+                <div class="option"><input type="radio" name="dampak_bisnis_karier" value="Hilang ide & kreativitas"> Hilang ide & kreativitas</div>
+                <div class="option"><input type="radio" name="dampak_bisnis_karier" value="Keputusan melambat"> Keputusan melambat</div>
+                <div class="option"><input type="radio" name="dampak_bisnis_karier" value="Relasi tim memburuk"> Relasi tim memburuk</div>
+                <div class="option"><input type="radio" name="dampak_bisnis_karier" value="Konsistensi menurun"> Konsistensi menurun</div>
+                <div class="option"><input type="radio" name="dampak_bisnis_karier" value="Finansial terpengaruh"> Finansial terpengaruh</div>
+                <div class="option">
+                    <input type="radio" name="dampak_bisnis_karier" value="Lainnya"> Lainnya
+                    <input type="text" name="dampak_bisnis_karier_lainnya" placeholder="Sebutkan lainnya">
+                </div>
+            </div>
+
+            <h2>5. Output yang Ingin Dicapai dari VIP 1:1</h2>
+            <div class="question">
+                <label>(Pilih minimal 2)</label>
+                <div class="option"><input type="checkbox" name="output_vip" value="Mind clarity instan"> Mind clarity instan</div>
+                <div class="option"><input type="checkbox" name="output_vip" value="Emosi lebih stabil"> Emosi lebih stabil</div>
+                <div class="option"><input type="checkbox" name="output_vip" value="Keberanian mengambil keputusan besar"> Keberanian mengambil keputusan besar</div>
+                <div class="option"><input type="checkbox" name="output_vip" value="Ketenangan yang meningkatkan pendapatan"> Ketenangan yang meningkatkan pendapatan</div>
+                <div class="option"><input type="checkbox" name="output_vip" value="Ide & peluang baru"> Ide & peluang baru</div>
+                <div class="option"><input type="checkbox" name="output_vip" value="Produktivitas maksimum"> Produktivitas maksimum</div>
+                <div class="option"><input type="checkbox" name="output_vip" value="Hubungan kerja & keluarga lebih baik"> Hubungan kerja & keluarga lebih baik</div>
+                <div class="option">
+                    <input type="checkbox" name="output_vip" value="Lainnya"> Lainnya
+                    <input type="text" name="output_vip_lainnya" placeholder="Jelaskan lainnya">
+                </div>
+            </div>
+
+            <h2>6. Hambatan Terdalam (Esai)</h2>
+            <div class="question">
+                <label>Jika Anda boleh jujur, apa hambatan terdalam yang tidak pernah Anda ceritakan kepada siapapun?</label>
+                <textarea name="hambatan_terdalam" placeholder="Jawab singkat"></textarea>
+            </div>
+
+            <h2>7. Kesiapan Transformasi</h2>
+            <div class="question">
+                <div class="option"><input type="radio" name="kesiapan_transformasi" value="Sangat siap"> Sangat siap</div>
+                <div class="option"><input type="radio" name="kesiapan_transformasi" value="Siap"> Siap</div>
+                <div class="option"><input type="radio" name="kesiapan_transformasi" value="Perlu waktu"> Perlu waktu</div>
+                <div class="option"><input type="radio" name="kesiapan_transformasi" value="Belum yakin"> Belum yakin</div>
+            </div>
+
+            <h2>8. Pernyataan VIP 1:1 (Wajib Setuju / Tidak Setuju)</h2>
+            <div class="final-statement">
+                <strong>VIP 1:1 adalah program intensif yang langsung ditangani tim inti dan founder. Program ini memakan energi besar karena bersifat personal, mendalam, dan diarahkan khusus untuk individu berpendapatan tinggi dengan tekanan kerja ekstrem.</strong>
+                <br><br>
+                <strong>Biaya program tidaklah murah. Sesi gratis diberikan agar Anda merasakan efektivitas metode kami, sehingga Anda tidak membeli sekadar “nasihat” — Anda membeli *kepastian perubahan*.</strong>
+                <br><br>
+                <strong>Program ini berjalan dalam paket 6 bulan dan 12 bulan, dengan skema pembayaran:</strong>
+                <ul>
+                    <li><strong>DP 50% di awal program</strong></li>
+                    <li><strong>Pelunasan sesuai periode paket</strong></li>
+                </ul>
+                <strong>Apakah Anda bersedia berinvestasi pada program dengan biaya premium ini apabila hasil awal sesuai ekspektasi Anda?</strong>
+            </div>
+            <div class="question">
+                <div class="option"><input type="radio" name="kesediaan_investasi" value="Ya, saya bersedia"> Ya, saya bersedia</div>
+                <div class="option"><input type="radio" name="kesediaan_investasi" value="Saya perlu mempertimbangkan"> Saya perlu mempertimbangkan</div>
+                <div class="option"><input type="radio" name="kesediaan_investasi" value="Tidak bersedia"> Tidak bersedia</div>
+            </div>
+
+            <button type="button" onclick="submitSurvey2()" class="submit-btn">Submit via WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        function submitSurvey2() {
+            const form = document.getElementById('surveyForm2');
+            const formData = new FormData(form);
+            let text = "Kak Renata saya sudah isi Second Survey\n\n";
+
+            let pendapatanTekanan = formData.get('pendapatan_tekanan');
+            if (pendapatanTekanan) {
+                if (pendapatanTekanan === 'Lainnya') {
+                    pendapatanTekanan = formData.get('pendapatan_tekanan_lainnya') || 'Lainnya (tidak dijelaskan)';
+                }
+                text += `1. Bagaimana hubungan antara pendapatan Anda saat ini dan tingkat tekanan yang Anda rasakan?\n- ${pendapatanTekanan}\n\n`;
+            }
+
+            const arahFinansial = formData.get('arah_finansial');
+            if (arahFinansial) {
+                text += `2. Dalam 6–12 bulan terakhir, kondisi finansial Anda cenderung:\n- ${arahFinansial}\n`;
+            }
+            const penyebabFinansial = formData.get('penyebab_finansial');
+            if (penyebabFinansial) {
+                text += `Apa penyebab utamanya?\n- ${penyebabFinansial}\n\n`;
+            }
+
+            let tantanganMental = formData.get('tantangan_mental');
+            if (tantanganMental) {
+                if (tantanganMental === 'Lainnya') {
+                    tantanganMental = formData.get('tantangan_mental_lainnya') || 'Lainnya (tidak disebutkan)';
+                }
+                text += `3. Tantangan Mental yang Paling Menghambat Kinerja:\n- ${tantanganMental}\n\n`;
+            }
+
+            let dampakBisnisKarier = formData.get('dampak_bisnis_karier');
+            if (dampakBisnisKarier) {
+                if (dampakBisnisKarier === 'Lainnya') {
+                    dampakBisnisKarier = formData.get('dampak_bisnis_karier_lainnya') || 'Lainnya (tidak disebutkan)';
+                }
+                text += `4. Dampak Terbesar ke Bisnis / Karier:\n- ${dampakBisnisKarier}\n\n`;
+            }
+
+            const outputVip = [];
+            form.querySelectorAll('input[name="output_vip"]:checked').forEach(checkbox => {
+                if (checkbox.value === 'Lainnya') {
+                    const otherText = form.querySelector('input[name="output_vip_lainnya"]').value;
+                    if (otherText) outputVip.push(otherText);
+                } else {
+                    outputVip.push(checkbox.value);
+                }
+            });
+            if (outputVip.length > 0) {
+                text += `5. Output yang Ingin Dicapai dari VIP 1:1:\n- ${outputVip.join(', ')}\n\n`;
+            }
+
+            const hambatanTerdalam = formData.get('hambatan_terdalam');
+            if (hambatanTerdalam) {
+                text += `6. Hambatan Terdalam (Esai):\n- ${hambatanTerdalam}\n\n`;
+            }
+
+            const kesiapanTransformasi = formData.get('kesiapan_transformasi');
+            if (kesiapanTransformasi) {
+                text += `7. Kesiapan Transformasi:\n- ${kesiapanTransformasi}\n\n`;
+            }
+
+            const kesediaanInvestasi = formData.get('kesediaan_investasi');
+            if (kesediaanInvestasi) {
+                text += `8. Apakah Anda bersedia berinvestasi pada program dengan biaya premium ini apabila hasil awal sesuai ekspektasi Anda?\n- ${kesediaanInvestasi}\n\n`;
+            }
+
+            const baseURL = "https://wa.me/62895325633487";
+            const encodedText = encodeURIComponent(text);
+            const finalURL = `${baseURL}?text=${encodedText}`;
+
+            window.open(finalURL, '_blank');
+        }
+    </script>
+</body>
+</html>
