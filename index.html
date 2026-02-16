@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eL Vision Group - Unlock Your 10x Potential</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.png" type="image/png">
+    <title>eL Vision Tree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --earth-dark: #1a1612;
+            --earth-brown: #3d2f1f;
+            --gold-accent: #d4af37;
+            --soft-cream: #f4ede4;
+            --sage: #8b9d83;
+            --deep-green: #2d4a3e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,1235 +22,299 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-            color: white;
-            padding-bottom: 50px; /* To ensure content at the bottom is not obscured */
-        }
-
-        .page {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--earth-dark) 0%, var(--earth-brown) 50%, var(--deep-green) 100%);
             min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Animated Background - Pitch Black with flowing stardust */
-        .bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #000000 100%);
-            z-index: -1;
-        }
-
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: flow linear infinite;
-            box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
-        }
-
-        @keyframes flow {
-            0% {
-                transform: translateX(-100vw) translateY(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100vw) translateY(50vh);
-                opacity: 0;
-            }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 50px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Tree of Life Background */
+        .tree-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.08;
+            width: 800px;
+            height: 800px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .tree-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.3));
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-icon-logo {
-            height: 40px; /* Adjust size as needed */
-            margin-right: 15px;
-        }
-
-        .nav-btn {
-            background: linear-gradient(135deg, #330033, #663366);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
             font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--gold-accent);
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.5);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
         }
 
-        .nav-btn:hover {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #440044, #774477);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--soft-cream);
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 0.08em;
         }
 
-        .nav-icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Page 1 - Main Landing */
-        #page1 {
+        .links {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px;
+            gap: 1rem;
         }
 
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #fff, #ddd, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.5); }
-        }
-
-        .content {
-            max-width: 900px;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .motto {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 30px 0;
-            color: #ccc;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .cta-btn {
-            background: linear-gradient(135deg, #330033, #663366);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 18px 40px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
-            background: linear-gradient(135deg, #440044, #774477);
-        }
-
-        .page1-content-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            margin-bottom: 20px;
-            max-width: 900px;
-            width: 100%;
-            text-align: left;
-        }
-
-        .btn-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Page 2 - Ecosystem */
-        #page2 {
-            display: none;
-            padding: 120px 20px 50px;
-        }
-
-        #page2.active {
-            display: block;
-        }
-
-        #page3 {
-            display: none;
-            padding: 120px 20px 50px; /* Added padding-top */
-        }
-
-        #page3.active {
-            display: block;
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #ddd;
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            margin: 30px 0 20px;
-            color: #bbb;
-        }
-
-        .section p, .section ul {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        ul li {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        ul li:before {
-            content: "→ ";
-            color: #888;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .benefit-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            border-color: #888;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .benefit-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #ddd;
-        }
-
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .testimony {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0px; /* Remove padding to make the background fit the content */
-            border-radius: 0px; /* Remove border-radius for sharp corners */
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 112.5px; /* Set width to match video/image */
-            height: 200px; /* Set height to match video/image */
-            overflow: hidden; /* Hide overflowing content */
-        }
-
-        .testimony img,
-        .testimony video {
-            width: 112.5px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .final-cta {
-            text-align: center;
-            padding: 60px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            margin: 40px auto;
-            max-width: 1000px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .final-cta h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-        }
-
-        .ecosystem-btn {
-            background: linear-gradient(135deg, #330033, #663366);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 20px 60px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        .link-card {
+            background: rgba(244, 237, 228, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
             text-decoration: none;
-            display: inline-block;
+            color: var(--soft-cream);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: cardSlideIn 0.6s ease-out backwards;
         }
 
-        .ecosystem-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
-            background: linear-gradient(135deg, #440044, #774477);
+        .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .link-card:nth-child(2) { animation-delay: 0.2s; }
+        .link-card:nth-child(3) { animation-delay: 0.3s; }
+        .link-card:nth-child(4) { animation-delay: 0.4s; }
+        .link-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            margin-top: 20px;
-        }
-        .whatsapp-btn:hover {
-            background: linear-gradient(135deg, #128C7E, #25D366);
-        }
-
-        .consequences {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
         }
 
-        /* Language Switcher */
-        .language-switcher {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1001;
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            transform: translateX(8px);
+            border-color: var(--gold-accent);
+            background: rgba(244, 237, 228, 0.1);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+        }
+
+        .link-card:active {
+            transform: translateX(6px) scale(0.98);
+        }
+
+        .link-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold-accent);
+            margin-bottom: 0.25rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
         }
 
-        .whatsapp-icon img {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
+        .link-url {
+            font-size: 0.9rem;
+            color: var(--soft-cream);
+            opacity: 0.6;
+            font-weight: 300;
         }
 
-        .language-switcher .globe-icon {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            background-image: url('https://img.icons8.com/color/48/000000/globe.png');
-            background-size: cover;
+        .arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
-        .language-switcher .language-dropdown {
-            display: none;
-            position: absolute;
-            bottom: 50px;
-            right: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
+        .link-card:hover .arrow {
+            transform: translateX(4px);
         }
 
-        .language-switcher .language-dropdown a {
-            display: block;
-            padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-            transition: background 0.3s;
+        /* Decorative elements */
+        .ornament {
+            text-align: center;
+            color: var(--gold-accent);
+            opacity: 0.3;
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            letter-spacing: 1rem;
         }
 
-        .language-switcher .language-dropdown a:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            nav { padding: 15px 20px; }
-            .section { padding: 20px; }
-            .nav-btn, .cta-btn {
-                font-size: 14px;
-                padding: 10px 20px;
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2rem;
             }
-            .testimony {
-                width: 100%;
-                height: auto; /* Allow height to adjust based on aspect ratio */
-                aspect-ratio: 9 / 16; /* Maintain 9:16 aspect ratio */
+            
+            .tree-background {
+                width: 600px;
+                height: 600px;
             }
-            .testimony img,
-            .testimony video {
-                width: 100%;
-                height: 100%;
+
+            .link-card {
+                padding: 1.25rem;
+            }
+
+            .link-title {
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-container">
-        <div class="stars" id="stars"></div>
-    </div>
-
-    <nav>
-        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/admin-image/elvisionlogo.png" alt="eL Vision Group Logo" class="nav-icon-logo">
-        <div class="logo">eL Vision Group</div>
-        <button id="nav-toggle-btn" class="nav-btn" onclick="togglePage('page1')" style="display: none;">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-            <span id="navText"></span>
-        </button>
-
-    </nav>
-
-    <!-- PAGE 1 -->
-    <div class="page" id="page1">
-        <h1 data-key="title">Unlock Your 10x Potential</h1>
-        <div class="page1-content-card">
-            <p data-key="p1">Di persimpangan antara potensi tak terbatas manusia dan akselerasi teknologi, eL Vision Group hadir. Kami bukan sekadar perusahaan; kami adalah sebuah parent company yang berdedikasi pada satu tujuan fundamental yang menggerakkan setiap langkah kami: <strong>Advance Humanity</strong>.</p>
-            <p data-key="p2">Misi kami adalah menjadi arsitek di balik kemajuan, kekuatan tak terlihat yang merancang fondasi bagi masa depan yang lebih cerdas, lebih sadar, dan lebih kuat.</p>
-        </div>
-        <div class="page1-content-card">
-            <p data-key="p3">Kami beroperasi sebagai "sistem di balik layar". Ketika sebuah perusahaan mencapai efisiensi yang mustahil, ketika sebuah tim beroperasi dengan harmoni dan fokus yang tajam, atau ketika sebuah terobosan lahir—kami ada di sana. Kami adalah mitra strategis bagi mereka yang membentuk dunia: mulai dari pengusaha visioner dan korporasi swasta yang menuntut keunggulan, hingga pilar intelijen negara yang menjaga stabilitas.</p>
-            <p data-key="p4"><strong>Bagaimana kami melakukannya?</strong> Kami percaya kemajuan sejati tidak dapat dipisahkan antara teknologi eksternal dan teknologi internal (manusia itu sendiri).</p>
-            <p data-key="p5">Kami merevolusi kinerja manusia dari dalam melalui program <strong>Meditasi Internal</strong> kami, sebuah metodologi yang dirancang untuk membuka kejelasan mental, ketahanan emosional, dan melipatgandakan produktivitas hingga 10 kali lipat. Kami mengubah tim yang stres dan reaktif menjadi kekuatan yang tenang, fokus, dan proaktif.</p>
-        </div>
-        <div class="page1-content-card">
-            <p data-key="p6">Secara bersamaan, kami menerapkan AI canggih bukan untuk menggantikan manusia, tetapi untuk membebaskan mereka. Teknologi kami mengotomatisasi kerumitan, memberikan kecepatan super dalam product research development, dan mentransformasi customer relation menjadi lebih intuitif dan efektif. Kami membiarkan mesin mengerjakan apa yang mereka kuasai, sehingga manusia dapat fokus pada apa yang hanya bisa mereka lakukan: kreativitas, strategi, dan koneksi otentik.</p>
-            <p data-key="p7">Namun, melayani klien di level tertinggi bukanlah akhir dari perjalanan kami. Itu adalah sarananya. Hati dan visi utama dari eL Vision Group tertuju pada satu target akhir yang sakral: <strong>People Power</strong>.</p>
-        </div>
-        <div class="page1-content-card">
-            <p data-key="p8">Kami memegang keyakinan mendalam bahwa kemajuan sejati adalah kemajuan yang dirasakan oleh semua, bukan hanya segelintir orang. Inilah sebabnya, dedikasi terbesar kami adalah membangun dan memberikan <strong>Ekosistem Pengembangan Masyarakat yang Sepenuhnya Gratis</strong>. Kami mengambil pengetahuan, sistem, dan teknologi terbaik yang telah teruji di level tertinggi, dan kami mendemokratisasikannya untuk publik. Karena masa depan terbaik adalah masa depan di mana setiap individu memiliki alat untuk maju dan berkontribusi.</p>
-        </div>
-        
-        <div class="motto" data-key="motto">Unlock Human Potential</div>
-        
-        <button class="cta-btn" onclick="togglePage('page2')">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-            <span data-key="readEcosystem">Read Ecosystem</span>
-        </button>
-        <button class="cta-btn" onclick="togglePage('page3')">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
-            <span data-key="businessCircle">Business Circle</span>
-        </button>
-
-    </div>
-
-        <!-- PAGE 2 -->
-
-        <div class="page" id="page2">
-
-            <div class="section">
-
-                <h2 data-key="miracle">Because Miracle is a Pattern</h2>
-
-                
-
-                <h3 data-key="realLife">Real Life</h3>
-
-                <ul>
-
-                    <li data-key="q1">Apakah Anda sudah bekerja mati-matian, tapi hasilnya tidak pernah cukup?</li>
-
-                    <li data-key="q2">Apakah Anda merasa hidup semakin sulit meski sudah berusaha keras?</li>
-
-                    <li data-key="q3">Apakah Anda mulai kehilangan semangat karena masalah datang tanpa henti?</li>
-
-                    <li data-key="q4">Apakah Anda ingin sekali tenang, tapi tak tahu caranya?</li>
-
-                    <li data-key="q5">Apakah semua hal yang Anda cintai seakan justru menjadi sumber rasa sakit?</li>
-
-                </ul>
-
-                <p style="text-align: center; font-size: 1.3rem; margin-top: 30px; color: #ddd;"><strong data-key="lifePattern">Kehidupan memiliki Pola</strong></p>
-
-            </div>
-
-    
-
-            <div class="section">
-
-                <h3 data-key="traumaTitle">Trauma Mencoba - Ketika Tubuh Sudah Menolak</h3>
-
-                <p data-key="traumaP1">Pernahkah kamu ada di titik di mana kamu takut untuk mencoba lagi? Bukan karena malas. Tapi karena trauma. Trauma saat usahamu yang paling maksimal justru menjadi pukulan paling telak yang membuat keadaan semakin buruk.</p>
-
-                
-
-                <p data-key="traumaP2">Rasa lelah paling menyakitkan bukanlah lelah karena bekerja keras. Tapi lelah saat menyadari semua kerja kerasmu… justru membuatmu lebih jauh dari tujuan. Kamu sudah melakukan segalanya, tapi kenapa rasanya seperti berlari di atas treadmill sambil menggali lubang di bawah kakimu?</p>
-
-                
-
-                <p data-key="traumaP3">Itu karena kamu berusaha keras saat hati dan pikiran masih tegang. <strong>Berhentilah. Itu hanya buang tenaga dan modal.</strong> Tenangkan dulu sesegera mungkin, karena saat ini… Anda hanya berusaha menggali lubang lebih dalam.</p>
-
-                
-
-                <p data-key="traumaP4"><strong>Kamu terperangkap di lumpur hisap.</strong></p>
-
-                
-
-                <p data-key="traumaP5">Secara naluriah, kamu bergerak sekuat tenaga, berharap bisa bebas. Tapi setiap gerakan panik itu justru menarikmu lebih cepat ke dalam. Semakin kamu berjuang, semakin cepat kamu tenggelam.</p>
-
-            </div>
-
-    
-
-            <div class="section">
-
-                <h3 data-key="trapTitle">Anda Terjebak dalam Lumpur Hisap Stres & Kegagalan? Lingkungan Anda Justru Menikmatinya!</h3>
-
-                <p data-key="trapP1">Anda berjuang keras, tapi semakin bergerak, semakin dalam terperosok. Stres tak berujung, kegagalan terus menghantam, dan dunia seakan bersekongkol menjatuhkan Anda. Ini bukan paranoia—lingkungan Andalah biang kerusakannya.</p>
-
-                
-
-                <p data-key="trapP2"><strong>Lihatlah:</strong></p>
-
-                <ul>
-
-                    <li data-key="trapL1">Saat Anda sukses, mereka iri dan menusuk dari belakang.</li>
-
-                    <li data-key="trapL2">Saat Anda jatuh, mereka pura-pura simpati, padahal dalam hati bersorak.</li>
-
-                    <li data-key="trapL3">Mereka menghisap energi, mematikan peluang, dan merusak mental Anda—sampai-sampai kerugiannya bisa ratusan juta rupiah!</li>
-
-                </ul>
-
-                
-
-                <p data-key="trapP3"><strong>Solusinya? eL Vision Group (Ebook + Audio + Komunitas).</strong> Ini bukan sekadar "biaya", tapi investasi termurah untuk kabur dari neraka toxic ini. Di sini, Anda dapat:</p>
-
-                <ul>
-
-                    <li data-key="trapL4">Lingkungan suportif yang merayakan kesuksesan Anda.</li>
-
-                    <li data-key="trapL5">Energi positif untuk membuka rezeki & kesehatan mental.</li>
-
-                    <li data-key="trapL6">Strategi nyata keluar dari sabotase diri & lingkungan.</li>
-
-                </ul>
-
-                
-
-                <p style="text-align: center; margin-top: 30px;"><strong data-key="choice">Pilih sekarang:</strong><br>
-
-                <span data-key="choice1">Bertahan di lumpur hisap, dikhianati terus?</span><br>
-
-                <span data-key="choice2">Atau bergabung dengan kami, bangkit, dan menang?</span><br><br>
-
-                <span style="color: #ddd; font-size: 1.3rem;" data-key="decision">Waktunya putuskan nasib Anda sendiri!</span></p>
-
-            </div>
-
-    
-
-            <div class="section">
-
-                <h3 data-key="gratitudeTitle">Apa itu Bersyukur?</h3>
-
-                <p data-key="gratitudeP1">Kami meyakini bahwa syukur bukan sekadar ucapan. Jika tubuh tegang, mata penuh stres, dan kepala terasa berat, itu adalah tanda tubuh sedang kufur meski lidah mengucap syukur.</p>
-
-                
-
-                <p data-key="gratitudeP2">Di eL Vision Group, Founder menciptakan <strong>teknik syukur hingga level sel</strong>, di mana tubuh Anda yang menyatakan syukur, bukan hanya lidah.</p>
-
-                
-
-                <p data-key="gratitudeP3">Inilah alasan mengapa metode ini sangat powerful – bukan magic, tapi murni sains.</p>
-
-                
-
-                <h3 style="margin-top: 40px;" data-key="miraclePattern">Pola Keajaiban</h3>
-
-                <p data-key="miracleP1">Saat menjalankan eL Vision Project, Keajaiban menjadi sesuatu yang rutin terjadi. Perpaduan antara Audio Canggih yang langsung hack sistem saraf kita dan langsung relax tanpa banyak kata.</p>
-
-            </div>
-
-    
-
-            <div class="section">
-
-                <h2 data-key="testimony">Testimony</h2>
-
-                <div class="testimonials">
-
-                    <div class="testimony">
-
-                        <video controls preload="metadata" poster="thumbnails/DRVIDEO_WA.jpg">
-
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/DRVIDEO_WA.mp4" type="video/mp4">
-
-                            Your browser does not support the video tag.
-
-                        </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <video controls preload="metadata" poster="thumbnails/HABIBVIDEO_WA.jpg">
-
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/HABIBVIDEO_WA.mp4" type="video/mp4">
-
-                            Your browser does not support the video tag.
-
-                        </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                                                <video controls preload="metadata" poster="thumbnails/FELVIDEO_WA.jpg">
-
-                                                    <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/FELVIDEO_WA.mp4" type="video/mp4">
-
-                                                    Your browser does not support the video tag.
-
-                                                </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <video controls preload="metadata" poster="thumbnails/VIOVIDEO_WA.jpg">
-
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/VIOVIDEO_WA.mp4" type="video/mp4">
-
-                            Your browser does not support the video tag.
-
-                        </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <video controls preload="metadata" poster="thumbnails/LENA_WA.jpg">
-
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/LENA_WA.mp4" type="video/mp4">
-
-                            Your browser does not support the video tag.
-
-                        </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <video controls preload="metadata" poster="thumbnails/arif.jpg">
-
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/arif.mp4" type="video/mp4">
-
-                            Your browser does not support the video tag.
-
-                        </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <video controls preload="metadata" poster="thumbnails/AGUS_WA.jpg">
-
-                            <source src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi/AGUS_WA.mp4" type="video/mp4">
-
-                            Your browser does not support the video tag.
-
-                        </video>
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_15taun.png" alt="Testimony Image">
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_muklas.jpeg" alt="Testimony Image">
-
-                    </div>
-
-                    <div class="testimony">
-
-                        <img src="https://nlrgdhpmsittuwiiindq.supabase.co/storage/v1/object/public/testi_jpg/testi_pelakor.jpeg" alt="Testimony Image">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-    
-
-            <div class="section">
-
-                <h3 data-key="saveAssets">Selamatkan Ratusan Juta Aset Anda, Bisnis Anda, Dari Mental Anda!</h3>
-
-                <p style="text-align: center; font-size: 1.2rem; margin: 20px 0;" data-key="smartIntervention"><strong>Intervensi Pintar Sistem Saraf yang Membajak Kesuksesan Anda</strong></p>
-
-                <p style="text-align: center; font-size: 1.1rem; margin: 20px 0;" data-key="proof">Kami Tidak Jual Janji Bukti Bicara: Ribuan Anggota + Testimony Nyata</p>
-
-                
-
-                <h3 style="text-align: center; margin: 40px 0;" data-key="brutalBenefits">Brutal Benefits Yang Akan Anda Dapatkan</h3>
-
-                
-
-                <div class="benefits">
-
-                    <div class="benefit-card">
-
-                        <h4 data-key="benefit1Title">🛑 Stop Sabotase Diri</h4>
-
-                        <p data-key="benefit1P">Intervensi canggih pada sistem saraf yang membajak kesuksesan Anda selama ini</p>
-
-                    </div>
-
-                    <div class="benefit-card">
-
-                        <h4 data-key="benefit2Title">🚪 Escape Toxic Environment</h4>
-
-                        <p data-key="benefit2P">Komunitas yang TIDAK akan menusuk dari belakang ketika Anda sukses</p>
-
-                    </div>
-
-                    <div class="benefit-card">
-
-                        <h4 data-key="benefit3Title">📡 Break Poverty Frequency</h4>
-
-                        <p data-key="benefit3P">Rubah sinyal kemiskinan menjadi sinyal kelimpahan yang menarik rezeki</p>
-
-                    </div>
-
-                    <div class="benefit-card">
-
-                        <h4 data-key="benefit4Title">💀 Kill Trauma Pattern</h4>
-
-                        <p data-key="benefit4P">Reset mental dari "mode perang" ke "mode menerima" yang mengalir</p>
-
-                    </div>
-
-                    <div class="benefit-card">
-
-                        <h4 data-key="benefit5Title">⚡ Nerve Hack Technology</h4>
-
-                        <p data-key="benefit5P">Paksa tubuh relax tanpa negosiasi menggunakan frekuensi canggih</p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-    
-
-            <div class="section consequences">
-
-                <h3 data-key="consequencesTitle">Konsekuensi</h3>
-
-                <p><strong data-key="howMuch">Berapa banyak:</strong></p>
-
-                <ul>
-
-                    <li data-key="consequence1">Tenaga Yang anda habiskan untuk menemukan solusi</li>
-
-                    <li data-key="consequence2">Uang yang sudah anda habiskan untuk liburan agar tenang</li>
-
-                    <li data-key="consequence3">Solusi yang anda bayarkan agar bisa melelehkan masalah</li>
-
-                    <li data-key="consequence4">Kehilangan orang orang yang anda perdulikan hanya karena ketidak mampuan anda</li>
-
-                    <li data-key="consequence5">Hati yang semakin kehilangan tujuan hidup ketika semua usaha terasa melawan anda</li>
-
-                </ul>
-
-                <p style="text-align: center; font-size: 1.2rem; margin-top: 30px; color: #ffcccc;"><strong data-key="sacrifice">Setiap hari berlalu sebanyak itulah yang anda korbankan ketika menjalani semua tanpa arah yang tepat</strong></p>
-
-            </div>
-
-    
-
-            <div class="final-cta">
-
-                <h2 data-key="decisionTime">Waktunya Ambil Keputusan</h2>
-
-                <p style="font-size: 1.3rem; margin-bottom: 40px;" data-key="finalP">Berapa lama lagi Anda akan membiarkan sistem saraf yang rusak menghancurkan masa depan Anda?</p>
-                <a href="https://app.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="enterEcosystem">MASUK KE ECOSYSTEM</a>
-                <a href="https://wa.me/62895325633487?text=Kak%20mau%20VVIP%201%3A1" target="_blank" class="ecosystem-btn whatsapp-btn" data-key="vip1on1">Apply for VIP 1:1</a>
-            </div>
-
-        </div>
-
-    
-
-        <!-- PAGE 3 -->
-
-        <div class="page" id="page3">
-
-            <div class="section">
-
-                <h2 data-key="elVisionBusinessCircle">eL Vision Business Circle</h2>
-
-                <p data-key="page3P1">Kami percaya bahwa kesuksesan bisnis tidak hanya ditentukan oleh teknik atau strategi eksternal, tetapi terutama oleh keyakinan, mentalitas, dan spirit sang pengusaha. Tiga hal ini menyumbang lebih dari 60% hasil kerja nyata.</p>
-
-                <p data-key="page3P2">Program ini khusus bagi para pengusaha berpengalaman, yang telah melalui pasang surut dunia bisnis dan menyadari betapa pentingnya kekuatan keyakinan serta berbahayanya keraguan.</p>
-
-                <p data-key="page3P3">Kami tidak menerima peserta yang masih berada pada pola pikir karyawan, karena mereka terbiasa dengan kepastian gaji dan tidak memahami bahwa dalam bisnis, keyakinan dan mentalitas kuat adalah napas utama untuk bertahan dan berkembang.</p>
-
-                <p data-key="page3P4">Circle ini dirancang bagi Anda yang telah memahami bahwa kualitas ketenangan batin dan keyakinan diri berpengaruh langsung pada hasil bisnis.</p>
-
-                            <p data-key="page3P5">Dengan sistem profit sharing yang besar, Anda hanya perlu menanggung biaya iklan, sementara tim kami akan mengarahkan strategi agar bisnis Anda produktif, efisien, dan laku keras — sehingga modal yang Anda keluarkan berkembang menjadi keuntungan berlipat.</p>
-
-                        </div>
-
-                        <div class="final-cta">
-
-                            <a href="https://dev.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="goToDev">Go to Dev</a>
-                            <a href="https://global.elvisiongroup.com" target="_blank" class="ecosystem-btn" data-key="globalClients">Global Clients</a>
-
-                        </div>
-
-                    </div>
-
-    <div class="language-switcher">
-        <div class="globe-icon" onclick="toggleLanguageDropdown()"></div>
-        <a href="https://wa.me/62895325633487?text=Kak%20mau%20VVIP%201%3A1" target="_blank" class="whatsapp-icon">
-            <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
-        </a>
-        <div class="language-dropdown" id="languageDropdown">
-            <a href="#" onclick="changeLanguage('en')">English</a>
-            <a href="#" onclick="changeLanguage('id')">Indonesia</a>
-            <a href="#" onclick="changeLanguage('ar')">العربية</a>
-        </div>
-    </div>
-
-    <script>
-        // Create animated flowing stars
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 150;
+    <!-- Tree of Life Background -->
+    <div class="tree-background">
+        <svg class="tree-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Roots -->
+            <path d="M100 180 Q80 160 60 180" stroke="var(--gold-accent)" fill="none" stroke-width="2" opacity="0.6"/>
+            <path d="M100 180 Q100 165 100 150" stroke="var(--gold-accent)" fill="none" stroke-width="2.5" opacity="0.7"/>
+            <path d="M100 180 Q120 160 140 180" stroke="var(--gold-accent)" fill="none" stroke-width="2" opacity="0.6"/>
             
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Random size
-                const size = Math.random() * 2 + 0.5;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                
-                // Random starting position
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                
-                // Random animation duration for flowing effect
-                star.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                star.style.animationDelay = Math.random() * 5 + 's';
-                
-                starsContainer.appendChild(star);
-            }
-        }
+            <!-- Main trunk -->
+            <path d="M100 150 Q98 120 100 90" stroke="var(--gold-accent)" fill="none" stroke-width="3" opacity="0.8"/>
+            
+            <!-- Branches -->
+            <path d="M100 130 Q85 120 70 115" stroke="var(--gold-accent)" fill="none" stroke-width="2.5" opacity="0.7"/>
+            <path d="M100 130 Q115 120 130 115" stroke="var(--gold-accent)" fill="none" stroke-width="2.5" opacity="0.7"/>
+            <path d="M100 110 Q80 100 65 95" stroke="var(--gold-accent)" fill="none" stroke-width="2" opacity="0.6"/>
+            <path d="M100 110 Q120 100 135 95" stroke="var(--gold-accent)" fill="none" stroke-width="2" opacity="0.6"/>
+            
+            <!-- Sacred circles (representing life cycles) -->
+            <circle cx="100" cy="90" r="20" stroke="var(--gold-accent)" fill="none" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="70" cy="70" r="12" stroke="var(--gold-accent)" fill="none" stroke-width="1" opacity="0.4"/>
+            <circle cx="130" cy="70" r="12" stroke="var(--gold-accent)" fill="none" stroke-width="1" opacity="0.4"/>
+            <circle cx="60" cy="50" r="8" stroke="var(--gold-accent)" fill="none" stroke-width="1" opacity="0.3"/>
+            <circle cx="140" cy="50" r="8" stroke="var(--gold-accent)" fill="none" stroke-width="1" opacity="0.3"/>
+            
+            <!-- Upper branches -->
+            <path d="M100 70 Q85 60 75 50" stroke="var(--gold-accent)" fill="none" stroke-width="2" opacity="0.6"/>
+            <path d="M100 70 Q115 60 125 50" stroke="var(--gold-accent)" fill="none" stroke-width="2" opacity="0.6"/>
+            <path d="M100 50 Q90 40 85 30" stroke="var(--gold-accent)" fill="none" stroke-width="1.5" opacity="0.5"/>
+            <path d="M100 50 Q110 40 115 30" stroke="var(--gold-accent)" fill="none" stroke-width="1.5" opacity="0.5"/>
+            
+            <!-- Crown -->
+            <circle cx="100" cy="35" r="15" stroke="var(--gold-accent)" fill="none" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="85" cy="25" r="8" stroke="var(--gold-accent)" fill="none" stroke-width="1" opacity="0.4"/>
+            <circle cx="115" cy="25" r="8" stroke="var(--gold-accent)" fill="none" stroke-width="1" opacity="0.4"/>
+        </svg>
+    </div>
 
-        // Toggle between pages
-        function togglePage(targetPageId) {
-            const page1 = document.getElementById('page1');
-            const page2 = document.getElementById('page2');
-            const page3 = document.getElementById('page3'); // Get page3
-            const navBtn = document.getElementById('nav-toggle-btn');
-            const navText = document.getElementById('navText');
+    <div class="container">
+        <div class="header">
+            <div class="logo">eL VISION</div>
+            <div class="subtitle">Navigate Our Ecosystem</div>
+        </div>
 
-            // Hide all pages first
-            page1.style.display = 'none';
-            page2.classList.remove('active');
-            page3.classList.remove('active'); // Hide page3
+        <div class="ornament">✦ ✦ ✦</div>
 
-            if (targetPageId === 'page1') {
-                page1.style.display = 'flex';
-                navBtn.style.display = 'none'; // Hide button when on home
-            } else if (targetPageId === 'page2') {
-                page2.classList.add('active');
-                navText.textContent = 'Back to Home';
-                navBtn.style.display = 'flex'; // Show button
-            } else if (targetPageId === 'page3') { // Handle page3
-                page3.classList.add('active');
-                navText.textContent = 'Back to Home';
-                navBtn.style.display = 'flex'; // Show button
-            }
-            window.scrollTo(0, 0);
-        }
+        <div class="links">
+            <a href="https://elvisiongroup.com" class="link-card">
+                <div class="link-title">
+                    <span>About eL Vision</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="link-url">elvisiongroup.com</div>
+            </a>
 
-        // Language Switcher
-        const translations = {
-            en: {
-                title: "Unlock Your 10x Potential",
-                p1: "At the intersection of limitless human potential and technological acceleration, eL Vision Group emerges. We are not just a company; we are a parent company dedicated to one fundamental goal that drives our every move: <strong>Advance Humanity</strong>.",
-                p2: "Our mission is to be the architects behind progress, the unseen force designing the foundation for a smarter, more conscious, and stronger future.",
-                p3: "We operate as the 'system behind the scenes.' When a company achieves impossible efficiency, when a team operates with sharp harmony and focus, or when a breakthrough is born—we are there. We are strategic partners to those who shape the world: from visionary entrepreneurs and private corporations demanding excellence, to the pillars of state intelligence who maintain stability.",
-                p4: "<strong>How do we do it?</strong> We believe true progress cannot be separated between external technology and internal technology (the human itself).",
-                p5: "We revolutionize human performance from within through our <strong>Internal Meditation</strong> program, a methodology designed to unlock mental clarity, emotional resilience, and multiply productivity by up to 10 times. We transform stressed and reactive teams into calm, focused, and proactive forces.",
-                p6: "Simultaneously, we implement advanced AI not to replace humans, but to free them. Our technology automates complexity, provides superhuman speed in product research and development, and transforms customer relations to be more intuitive and effective. We let machines do what they do best, so humans can focus on what only they can do: creativity, strategy, and authentic connection.",
-                p7: "However, serving clients at the highest level is not the end of our journey. It is the means. The heart and ultimate vision of eL Vision Group are directed towards one sacred final goal: <strong>People Power</strong>.",
-                p8: "We hold a deep conviction that true progress is progress felt by all, not just a select few. This is why our greatest dedication is to build and provide a <strong>Completely Free Community Development Ecosystem</strong>. We take the best knowledge, systems, and technology that have been tested at the highest levels, and we democratize them for the public. Because the best future is one where every individual has the tools to advance and contribute.",
-                motto: "Unlock Human Potential",
-                readEcosystem: "Read Ecosystem",
-                businessCircle: "Business Circle",
-                miracle: "Because Miracle is a Pattern",
-                realLife: "Real Life",
-                q1: "Have you worked to death, but the results are never enough?",
-                q2: "Do you feel life is getting harder despite trying your best?",
-                q3: "Are you starting to lose spirit because problems come endlessly?",
-                q4: "Do you desperately want to be calm, but don't know how?",
-                q5: "Does everything you love seem to be the source of your pain?",
-                lifePattern: "Life has a Pattern",
-                traumaTitle: "Trauma of Trying - When the Body Refuses",
-                traumaP1: "Have you ever been at a point where you're afraid to try again? Not because you're lazy. But because of trauma. The trauma when your maximum effort becomes the hardest blow that makes things worse.",
-                traumaP2: "The most painful fatigue is not from working hard. It's the fatigue of realizing all your hard work... just takes you further from your goal. You've done everything, but why does it feel like running on a treadmill while digging a hole under your feet?",
-                traumaP3: "It's because you try hard when your heart and mind are still tense. <strong>Stop. It's just a waste of energy and capital.</strong> Calm down as soon as possible, because right now... you are only trying to dig the hole deeper.",
-                traumaP4: "<strong>You are trapped in quicksand.</strong>",
-                traumaP5: "Instinctively, you move with all your might, hoping to be free. But every panicked movement just pulls you in faster. The more you struggle, the faster you sink.",
-                trapTitle: "Trapped in the Quicksand of Stress & Failure? Your Environment is Enjoying It!",
-                trapP1: "You fight hard, but the more you move, the deeper you sink. Endless stress, constant failure, and the world seems to conspire against you. This isn't paranoia—your environment is the culprit.",
-                trapP2: "<strong>Look:</strong>",
-                trapL1: "When you succeed, they get jealous and stab you in the back.",
-                trapL2: "When you fall, they pretend to sympathize, but inwardly they cheer.",
-                trapL3: "They drain your energy, kill opportunities, and destroy your mental state—to the point of hundreds of millions in losses!",
-                trapP3: "<strong>The solution? eL Vision Group (Ebook + Audio + Community).</strong> This isn't just a 'cost,' but the cheapest investment to escape this toxic hell. Here, you can get:",
-                trapL4: "A supportive environment that celebrates your success.",
-                trapL5: "Positive energy to unlock fortune & mental health.",
-                trapL6: "Real strategies to get out of self-sabotage & toxic environments.",
-                choice: "<strong>Choose now:</strong>",
-                choice1: "Stay in the quicksand, constantly betrayed?",
-                choice2: "Or join us, rise, and win?",
-                decision: "Time to decide your own fate!",
-                gratitudeTitle: "What is Gratitude?",
-                gratitudeP1: "We believe that gratitude is not just a word. If the body is tense, the eyes are full of stress, and the head feels heavy, it is a sign the body is in a state of denial even if the tongue speaks of gratitude.",
-                gratitudeP2: "At eL Vision Group, the Founder created a <strong>gratitude technique down to the cellular level</strong>, where your body expresses gratitude, not just your tongue.",
-                gratitudeP3: "This is why this method is so powerful – it's not magic, but pure science.",
-                miraclePattern: "The Miracle Pattern",
-                miracleP1: "When running the eL Vision Project, miracles become a routine. A combination of Advanced Audio that directly hacks our nervous system and instantly relaxes without many words.",
-                testimony: "Testimony",
-                saveAssets: "Save Hundreds of Millions of Your Assets, Your Business, From Your Mind!",
-                smartIntervention: "<strong>Smart Intervention on the Nervous System that Hijacks Your Success</strong>",
-                proof: "We Don't Sell Promises, Proof Speaks: Thousands of Members + Real Testimonies",
-                brutalBenefits: "Brutal Benefits You Will Get",
-                benefit1Title: "🛑 Stop Self-Sabotage",
-                benefit1P: "Advanced intervention on the nervous system that has been hijacking your success.",
-                benefit2Title: "🚪 Escape Toxic Environment",
-                benefit2P: "A community that will NOT stab you in the back when you succeed.",
-                benefit3Title: "📡 Break Poverty Frequency",
-                benefit3P: "Change the poverty signal into a signal of abundance that attracts fortune.",
-                benefit4Title: "💀 Kill Trauma Pattern",
-                benefit4P: "Reset the mind from 'war mode' to a flowing 'receiving mode'.",
-                benefit5Title: "⚡ Nerve Hack Technology",
-                benefit5P: "Force the body to relax without negotiation using advanced frequencies.",
-                consequencesTitle: "Consequences",
-                howMuch: "<strong>How much:</strong>",
-                consequence1: "Energy have you spent to find a solution",
-                consequence2: "Money have you spent on vacations to find peace",
-                consequence3: "Solutions have you paid for to melt your problems away",
-                consequence4: "Losing the people you care about just because of your inability",
-                consequence5: "A heart that increasingly loses its purpose in life when all efforts feel against you",
-                sacrifice: "<strong>Every day that passes is how much you sacrifice when you live without the right direction</strong>",
-                decisionTime: "Time to Make a Decision",
-                finalP: "How much longer will you let a damaged nervous system destroy your future?",
-                enterEcosystem: "ENTER THE ECOSYSTEM",
-                goToDev: "Go to Dev",
-                globalClients: "Global Clients",
-                page3P1: "We believe that business success is not only determined by external techniques or strategies, but primarily by the entrepreneur's belief, mentality, and spirit. These three factors contribute more than 60% of real results.",
-                page3P2: "This program is specifically for experienced entrepreneurs who have gone through the ups and downs of the business world and realize the importance of the power of belief and the danger of doubt.",
-                page3P3: "We do not accept participants who are still in an employee mindset, as they are accustomed to salary certainty and do not understand that in business, strong belief and mentality are the main breath for survival and growth.",
-                page3P4: "This Circle is designed for those of you who have understood that the quality of inner peace and self-belief directly affects business results.",
-                page3P5: "With a large profit-sharing system, you only need to bear the advertising costs, while our team will direct strategies to make your business productive, efficient, and highly marketable — so that your capital investment grows into multiplied profits."
-            },
-            id: {
-                title: "Buka Potensi 10x Anda",
-                p1: "Di persimpangan antara potensi tak terbatas manusia dan akselerasi teknologi, eL Vision Group hadir. Kami bukan sekadar perusahaan; kami adalah sebuah parent company yang berdedikasi pada satu tujuan fundamental yang menggerakkan setiap langkah kami: <strong>Memajukan Kemanusiaan</strong>.",
-                p2: "Misi kami adalah menjadi arsitek di balik kemajuan, kekuatan tak terlihat yang merancang fondasi bagi masa depan yang lebih cerdas, lebih sadar, dan lebih kuat.",
-                p3: "Kami beroperasi sebagai 'sistem di balik layar'. Ketika sebuah perusahaan mencapai efisiensi yang mustahil, ketika sebuah tim beroperasi dengan harmoni dan fokus yang tajam, atau ketika sebuah terobosan lahir—kami ada di sana. Kami adalah mitra strategis bagi mereka yang membentuk dunia: mulai dari pengusaha visioner dan korporasi swasta yang menuntut keunggulan, hingga pilar intelijen negara yang menjaga stabilitas.",
-                p4: "<strong>Bagaimana kami melakukannya?</strong> Kami percaya kemajuan sejati tidak dapat dipisahkan antara teknologi eksternal dan teknologi internal (manusia itu sendiri).",
-                p5: "Kami merevolusi kinerja manusia dari dalam melalui program <strong>Meditasi Internal</strong> kami, sebuah metodologi yang dirancang untuk membuka kejelasan mental, ketahanan emosional, dan melipatgandakan produktivitas hingga 10 kali lipat. Kami mengubah tim yang stres dan reaktif menjadi kekuatan yang tenang, fokus, dan proaktif.",
-                p6: "Secara bersamaan, kami menerapkan AI canggih bukan untuk menggantikan manusia, tetapi untuk membebaskan mereka. Teknologi kami mengotomatisasi kerumitan, memberikan kecepatan super dalam product research development, dan mentransformasi customer relation menjadi lebih intuitif dan efektif. Kami membiarkan mesin mengerjakan apa yang mereka kuasai, sehingga manusia dapat fokus pada apa yang hanya bisa mereka lakukan: kreativitas, strategi, dan koneksi otentik.",
-                p7: "Namun, melayani klien di level tertinggi bukanlah akhir dari perjalanan kami. Itu adalah sarananya. Hati dan visi utama dari eL Vision Group tertuju pada satu target akhir yang sakral: <strong>Kekuatan Rakyat</strong>.",
-                p8: "Kami memegang keyakinan mendalam bahwa kemajuan sejati adalah kemajuan yang dirasakan oleh semua, bukan hanya segelintir orang. Inilah sebabnya, dedikasi terbesar kami adalah membangun dan memberikan <strong>Ekosistem Pengembangan Masyarakat yang Sepenuhnya Gratis</strong>. Kami mengambil pengetahuan, sistem, dan teknologi terbaik yang telah teruji di level tertinggi, dan kami mendemokratisasikannya untuk publik. Karena masa depan terbaik adalah masa depan di mana setiap individu memiliki alat untuk maju dan berkontribusi.",
-                motto: "Buka Potensi Manusia",
-                readEcosystem: "Baca Ekosistem",
-                businessCircle: "Lingkaran Bisnis",
-                miracle: "Karena Keajaiban adalah Pola",
-                realLife: "Kehidupan Nyata",
-                q1: "Apakah Anda sudah bekerja mati-matian, tapi hasilnya tidak pernah cukup?",
-                q2: "Apakah Anda merasa hidup semakin sulit meski sudah berusaha keras?",
-                q3: "Apakah Anda mulai kehilangan semangat karena masalah datang tanpa henti?",
-                q4: "Apakah Anda ingin sekali tenang, tapi tak tahu caranya?",
-                q5: "Apakah semua hal yang Anda cintai seakan justru menjadi sumber rasa sakit?",
-                lifePattern: "Kehidupan memiliki Pola",
-                traumaTitle: "Trauma Mencoba - Ketika Tubuh Sudah Menolak",
-                traumaP1: "Pernahkah kamu ada di titik di mana kamu takut untuk mencoba lagi? Bukan karena malas. Tapi karena trauma. Trauma saat usahamu yang paling maksimal justru menjadi pukulan paling telak yang membuat keadaan semakin buruk.",
-                traumaP2: "Rasa lelah paling menyakitkan bukanlah lelah karena bekerja keras. Tapi lelah saat menyadari semua kerja kerasmu… justru membuatmu lebih jauh dari tujuan. Kamu sudah melakukan segalanya, tapi kenapa rasanya seperti berlari di atas treadmill sambil menggali lubang di bawah kakimu?",
-                traumaP3: "Itu karena kamu berusaha keras saat hati dan pikiran masih tegang. <strong>Berhentilah. Itu hanya buang tenaga dan modal.</strong> Tenangkan dulu sesegera mungkin, karena saat ini… Anda hanya berusaha menggali lubang lebih dalam.",
-                traumaP4: "<strong>Kamu terperangkap di lumpur hisap.</strong>",
-                traumaP5: "Secara naluriah, kamu bergerak sekuat tenaga, berharap bisa bebas. Tapi setiap gerakan panik itu justru menarikmu lebih cepat ke dalam. Semakin kamu berjuang, semakin cepat kamu tenggelam.",
-                trapTitle: "Anda Terjebak dalam Lumpur Hisap Stres & Kegagalan? Lingkungan Anda Justru Menikmatinya!",
-                trapP1: "Anda berjuang keras, tapi semakin bergerak, semakin dalam terperosok. Stres tak berujung, kegagalan terus menghantam, dan dunia seakan bersekongkol menjatuhkan Anda. Ini bukan paranoia—lingkungan Andalah biang kerusakannya.",
-                trapP2: "<strong>Lihatlah:</strong>",
-                trapL1: "Saat Anda sukses, mereka iri dan menusuk dari belakang.",
-                trapL2: "Saat Anda jatuh, mereka pura-pura simpati, padahal dalam hati bersorak.",
-                trapL3: "Mereka menghisap energi, mematikan peluang, dan merusak mental Anda—sampai-sampai kerugiannya bisa ratusan juta rupiah!",
-                trapP3: "<strong>Solusinya? eL Vision Group (Ebook + Audio + Komunitas).</strong> Ini bukan sekadar 'biaya', tapi investasi termurah untuk kabur dari neraka toxic ini. Di sini, Anda dapat:",
-                trapL4: "Lingkungan suportif yang merayakan kesuksesan Anda.",
-                trapL5: "Energi positif untuk membuka rezeki & kesehatan mental.",
-                trapL6: "Strategi nyata keluar dari sabotase diri & lingkungan.",
-                choice: "<strong>Pilih sekarang:</strong>",
-                choice1: "Bertahan di lumpur hisap, dikhianati terus?",
-                choice2: "Atau bergabung dengan kami, bangkit, dan menang?",
-                decision: "Waktunya putuskan nasib Anda sendiri!",
-                gratitudeTitle: "Apa itu Bersyukur?",
-                gratitudeP1: "Kami meyakini bahwa syukur bukan sekadar ucapan. Jika tubuh tegang, mata penuh stres, dan kepala terasa berat, itu adalah tanda tubuh sedang kufur meski lidah mengucap syukur.",
-                gratitudeP2: "Di eL Vision Group, Founder menciptakan <strong>teknik syukur hingga level sel</strong>, di mana tubuh Anda yang menyatakan syukur, bukan hanya lidah.",
-                gratitudeP3: "Inilah alasan mengapa metode ini sangat powerful – bukan magic, tapi murni sains.",
-                miraclePattern: "Pola Keajaiban",
-                miracleP1: "Saat menjalankan eL Vision Project, Keajaiban menjadi sesuatu yang rutin terjadi. Perpaduan antara Audio Canggih yang langsung hack sistem saraf kita dan langsung relax tanpa banyak kata.",
-                testimony: "Testimoni",
-                saveAssets: "Selamatkan Ratusan Juta Aset Anda, Bisnis Anda, Dari Mental Anda!",
-                smartIntervention: "<strong>Intervensi Pintar Sistem Saraf yang Membajak Kesuksesan Anda</strong>",
-                proof: "Kami Tidak Jual Janji Bukti Bicara: Ribuan Anggota + Testimony Nyata",
-                brutalBenefits: "Manfaat Brutal Yang Akan Anda Dapatkan",
-                benefit1Title: "🛑 Hentikan Sabotase Diri",
-                benefit1P: "Intervensi canggih pada sistem saraf yang membajak kesuksesan Anda selama ini.",
-                benefit2Title: "🚪 Keluar dari Lingkungan Beracun",
-                benefit2P: "Komunitas yang TIDAK akan menusuk dari belakang ketika Anda sukses.",
-                benefit3Title: "📡 Putus Frekuensi Kemiskinan",
-                benefit3P: "Ubah sinyal kemiskinan menjadi sinyal kelimpahan yang menarik rezeki.",
-                benefit4Title: "💀 Bunuh Pola Trauma",
-                benefit4P: "Reset mental dari 'mode perang' ke 'mode menerima' yang mengalir.",
-                benefit5Title: "⚡ Teknologi Peretasan Saraf",
-                benefit5P: "Paksa tubuh rileks tanpa negosiasi menggunakan frekuensi canggih.",
-                consequencesTitle: "Konsekuensi",
-                howMuch: "<strong>Berapa banyak:</strong>",
-                consequence1: "Tenaga yang anda habiskan untuk menemukan solusi",
-                consequence2: "Uang yang sudah anda habiskan untuk liburan agar tenang",
-                consequence3: "Solusi yang anda bayarkan agar bisa melelehkan masalah",
-                consequence4: "Kehilangan orang orang yang anda perdulikan hanya karena ketidak mampuan anda",
-                consequence5: "Hati yang semakin kehilangan tujuan hidup ketika semua usaha terasa melawan anda",
-                sacrifice: "<strong>Setiap hari berlalu sebanyak itulah yang anda korbankan ketika menjalani semua tanpa arah yang tepat</strong>",
-                decisionTime: "Waktunya Ambil Keputusan",
-                finalP: "Berapa lama lagi Anda akan membiarkan sistem saraf yang rusak menghancurkan masa depan Anda?",
-                enterEcosystem: "MASUK KE EKOSISTEM",
-                goToDev: "Pergi ke Dev",
-                globalClients: "Klien Global",
-                page3P1: "Kami percaya bahwa kesuksesan bisnis tidak hanya ditentukan oleh teknik atau strategi eksternal, tetapi terutama oleh keyakinan, mentalitas, dan spirit sang pengusaha. Tiga hal ini menyumbang lebih dari 60% hasil kerja nyata.",
-                page3P2: "Program ini khusus bagi para pengusaha berpengalaman, yang telah melalui pasang surut dunia bisnis dan menyadari betapa pentingnya kekuatan keyakinan serta berbahayanya keraguan.",
-                page3P3: "Kami tidak menerima peserta yang masih berada pada pola pikir karyawan, karena mereka terbiasa dengan kepastian gaji dan tidak memahami bahwa dalam bisnis, keyakinan dan mentalitas kuat adalah napas utama untuk bertahan dan berkembang.",
-                page3P4: "Circle ini dirancang bagi Anda yang telah memahami bahwa kualitas ketenangan batin dan keyakinan diri berpengaruh langsung pada hasil bisnis.",
-                page3P5: "Dengan sistem profit sharing yang besar, Anda hanya perlu menanggung biaya iklan, sementara tim kami akan mengarahkan strategi agar bisnis Anda produktif, efisien, dan laku keras — sehingga modal yang Anda keluarkan berkembang menjadi keuntungan berlipat."
-            },
-            ar: {
-                title: "أطلق العنان لإمكانياتك 10x",
-                p1: "عند تقاطع الإمكانات البشرية اللامحدودة والتسارع التكنولوجي ، تظهر مجموعة eL Vision. نحن لسنا مجرد شركة ؛ نحن شركة أم مكرسة لهدف أساسي واحد يدفع كل تحركاتنا: <strong>تقدم الإنسانية</strong>.",
-                p2: "مهمتنا هي أن نكون المهندسين المعماريين وراء التقدم ، القوة غير المرئية التي تصمم الأساس لمستقبل أكثر ذكاءً ووعيًا وقوة.",
-                p3: "نحن نعمل 'كنظام وراء الكواليس'. عندما تحقق شركة كفاءة مستحيلة ، أو عندما يعمل فريق بانسجام وتركيز حاد ، أو عندما يولد اختراق - نحن هناك. نحن شركاء استراتيجيون لأولئك الذين يشكلون العالم: من رواد الأعمال أصحاب الرؤى والشركات الخاصة التي تتطلب التميز ، إلى أعمدة استخبارات الدولة التي تحافظ على الاستقرار.",
-                p4: "<strong>كيف نفعل ذلك؟</strong> نحن نؤمن بأن التقدم الحقيقي لا يمكن فصله بين التكنولوجيا الخارجية والتكنولوجيا الداخلية (الإنسان نفسه).",
-                p5: "نحن نحدث ثورة في الأداء البشري من الداخل من خلال برنامج <strong>التأمل الداخلي</strong> ، وهو منهجية مصممة لإطلاق العنان للوضوح العقلي والمرونة العاطفية ومضاعفة الإنتاجية بما يصل إلى 10 مرات. نحن نحول الفرق المجهدة والمتفاعلة إلى قوى هادئة ومركزة واستباقية.",
-                p6: "في الوقت نفسه ، نقوم بتطبيق الذكاء الاصطناعي المتقدم ليس ليحل محل البشر ، ولكن لتحريرهم. تعمل تقنيتنا على أتمتة التعقيد ، وتوفر سرعة خارقة في تطوير أبحاث المنتجات ، وتحول علاقات العملاء لتكون أكثر سهولة وفعالية. نحن نترك الآلات تفعل ما تفعله بشكل أفضل ، حتى يتمكن البشر من التركيز على ما يمكنهم فعله فقط: الإبداع والاستراتيجية والتواصل الأصيل.",
-                p7: "ومع ذلك ، فإن خدمة العملاء على أعلى مستوى ليست نهاية رحلتنا. إنها الوسيلة. يتجه قلب ورؤية مجموعة eL Vision النهائية نحو هدف نهائي مقدس واحد: <strong>قوة الشعب</strong>.",
-                p8: "لدينا قناعة عميقة بأن التقدم الحقيقي هو التقدم الذي يشعر به الجميع ، وليس فقط قلة مختارة. هذا هو السبب في أن أكبر تفانينا هو بناء وتوفير <strong>نظام بيئي مجاني تمامًا لتنمية المجتمع</strong>. نحن نأخذ أفضل المعارف والأنظمة والتكنولوجيا التي تم اختبارها على أعلى المستويات ، ونجعلها ديمقراطية للجمهور. لأن أفضل مستقبل هو المستقبل الذي يمتلك فيه كل فرد الأدوات اللازمة للتقدم والمساهمة.",
-                motto: "أطلق العنان للإمكانات البشرية",
-                readEcosystem: "اقرأ النظام البيئي",
-                businessCircle: "دائرة الأعمال",
-                miracle: "لأن المعجزة نمط",
-                realLife: "الحياة الحقيقية",
-                q1: "هل عملت حتى الموت ، لكن النتائج لم تكن كافية أبدًا؟",
-                q2: "هل تشعر أن الحياة تزداد صعوبة على الرغم من بذل قصارى جهدك؟",
-                q3: "هل بدأت تفقد الروح لأن المشاكل تأتي بلا نهاية؟",
-                q4: "هل تريد بشدة أن تكون هادئًا ، لكنك لا تعرف كيف؟",
-                q5: "هل يبدو أن كل ما تحبه هو مصدر ألمك؟",
-                lifePattern: "الحياة لها نمط",
-                traumaTitle: "صدمة المحاولة - عندما يرفض الجسد",
-                traumaP1: "هل سبق لك أن كنت في مرحلة تخشى فيها المحاولة مرة أخرى؟ ليس لأنك كسول. ولكن بسبب الصدمة. الصدمة عندما يصبح أقصى جهد تبذله هو أقسى ضربة تزيد الأمور سوءًا.",
-                traumaP2: "أكثر أنواع التعب إيلامًا ليس التعب من العمل الجاد. إنه التعب من إدراك كل عملك الشاق ... يأخذك بعيدًا عن هدفك. لقد فعلت كل شيء ، ولكن لماذا تشعر وكأنك تركض على جهاز المشي وأنت تحفر حفرة تحت قدميك؟",
-                traumaP3: "ذلك لأنك تحاول بجد عندما لا يزال قلبك وعقلك متوترين. <strong>توقف. إنه مجرد إهدار للطاقة ورأس المال.</strong> اهدأ في أسرع وقت ممكن ، لأنه في الوقت الحالي ... أنت تحاول فقط حفر الحفرة بشكل أعمق.",
-                traumaP4: "<strong>أنت محاصر في رمال متحركة.</strong>",
-                traumaP5: "بشكل غريزي ، تتحرك بكل قوتك ، على أمل أن تكون حراً. لكن كل حركة مذعورة تسحبك بشكل أسرع. كلما كافحت ، غرقت بشكل أسرع.",
-                trapTitle: "محاصر في الرمال المتحركة من التوتر والفشل؟ بيئتك تستمتع به!",
-                trapP1: "أنت تقاتل بجد ، ولكن كلما تحركت ، غرقت أعمق. ضغوط لا نهاية لها ، وفشل مستمر ، ويبدو أن العالم يتآمر ضدك. هذا ليس جنون العظمة - بيئتك هي الجاني.",
-                trapP2: "<strong>انظر:</strong>",
-                trapL1: "عندما تنجح ، يغارون ويطعنونك في الظهر.",
-                trapL2: "عندما تسقط ، يتظاهرون بالتعاطف ، لكنهم في الداخل يهتفون.",
-                trapL3: "إنهم يستنزفون طاقتك ، ويقتلون الفرص ، ويدمرون حالتك العقلية - لدرجة خسائر بمئات الملايين!",
-                trapP3: "<strong>الحل؟ مجموعة eL Vision (كتاب إلكتروني + صوت + مجتمع).</strong> هذا ليس مجرد 'تكلفة' ، ولكنه أرخص استثمار للهروب من هذا الجحيم السام. هنا ، يمكنك الحصول على:",
-                trapL4: "بيئة داعمة تحتفل بنجاحك.",
-                trapL5: "طاقة إيجابية لإطلاق العنان للثروة والصحة العقلية.",
-                trapL6: "استراتيجيات حقيقية للخروج من التخريب الذاتي والبيئات السامة.",
-                choice: "<strong>اختر الآن:</strong>",
-                choice1: "البقاء في الرمال المتحركة ، والخيانة باستمرار؟",
-                choice2: "أو انضم إلينا ، وانهض ، وانتصر؟",
-                decision: "حان الوقت لتقرر مصيرك!",
-                gratitudeTitle: "ما هو الامتنان؟",
-                gratitudeP1: "نحن نؤمن بأن الامتنان ليس مجرد كلمة. إذا كان الجسم متوترًا ، والعينان مليئة بالتوتر ، والرأس ثقيلًا ، فهذه علامة على أن الجسد في حالة إنكار حتى لو نطق اللسان بالامتنان.",
-                gratitudeP2: "في مجموعة eL Vision ، ابتكر المؤسس <strong>تقنية امتنان تصل إلى المستوى الخلوي</strong> ، حيث يعبر جسمك عن الامتنان ، وليس لسانك فقط.",
-                gratitudeP3: "هذا هو السبب في أن هذه الطريقة قوية جدًا - إنها ليست سحرًا ، ولكنها علم بحت.",
-                miraclePattern: "نمط المعجزة",
-                miracleP1: "عند تشغيل مشروع eL Vision ، تصبح المعجزات روتينًا. مزيج من الصوت المتقدم الذي يخترق نظامنا العصبي مباشرة ويريح على الفور دون الكثير من الكلمات.",
-                testimony: "شهادة",
-                saveAssets: "أنقذ مئات الملايين من أصولك وعملك من عقلك!",
-                smartIntervention: "<strong>تدخل ذكي في الجهاز العصبي الذي يختطف نجاحك</strong>",
-                proof: "نحن لا نبيع الوعود ، الدليل يتحدث: آلاف الأعضاء + شهادات حقيقية",
-                brutalBenefits: "الفوائد الوحشية التي ستحصل عليها",
-                benefit1Title: "🛑 توقف عن التخريب الذاتي",
-                benefit1P: "تدخل متقدم في الجهاز العصبي الذي كان يختطف نجاحك.",
-                benefit2Title: "🚪 اهرب من البيئة السامة",
-                benefit2P: "مجتمع لن يطعنك في الظهر عندما تنجح.",
-                benefit3Title: "📡 اكسر تردد الفقر",
-                benefit3P: "غير إشارة الفقر إلى إشارة وفرة تجذب الثروة.",
-                benefit4Title: "💀 اقتل نمط الصدمة",
-                benefit4P: "أعد ضبط العقل من 'وضع الحرب' إلى 'وضع الاستلام' المتدفق.",
-                benefit5Title: "⚡ تقنية اختراق الأعصاب",
-                benefit5P: "أجبر الجسم على الاسترخاء دون تفاوض باستخدام ترددات متقدمة.",
-                consequencesTitle: "عواقب",
-                howMuch: "<strong>كم:</strong>",
-                consequence1: "الطاقة التي أنفقتها لإيجاد حل",
-                consequence2: "المال الذي أنفقته في الإجازات لإيجاد السلام",
-                consequence3: "الحلول التي دفعت ثمنها لإذابة مشاكلك",
-                consequence4: "فقدان الأشخاص الذين تهتم بهم لمجرد عدم قدرتك",
-                consequence5: "قلب يفقد هدفه في الحياة بشكل متزايد عندما تشعر أن كل الجهود ضدك",
-                sacrifice: "<strong>كل يوم يمر هو مقدار ما تضحي به عندما تعيش بدون الاتجاه الصحيح</strong>",
-                decisionTime: "حان وقت اتخاذ القرار",
-                finalP: "إلى متى ستدع الجهاز العصبي التالف يدمر مستقبلك؟",
-                enterEcosystem: "ادخل إلى النظام البيئي",
-                goToDev: "اذهب إلى ديف",
-                globalClients: "العملاء العالميين",
-                page3P1: "نحن نؤمن بأن نجاح الأعمال لا يتحدد فقط بالتقنيات أو الاستراتيجيات الخارجية، بل بشكل أساسي بإيمان رائد الأعمال وعقليته وروحه. تساهم هذه العوامل الثلاثة بأكثر من 60% من النتائج الحقيقية.",
-                page3P2: "هذا البرنامج مخصص لرواد الأعمال ذوي الخبرة، الذين مروا بتقلبات عالم الأعمال ويدركون أهمية قوة الإيمان وخطر الشك.",
-                page3P3: "لا نقبل المشاركين الذين ما زالوا يتمتعون بعقلية الموظف، لأنهم اعتادوا على يقين الراتب ولا يفهمون أنه في الأعمال التجارية، الإيمان القوي والعقلية هما النفس الرئيسي للبقاء والنمو.",
-                page3P4: "تم تصميم هذه الدائرة لأولئك الذين أدركوا أن جودة السلام الداخلي والثقة بالنفس تؤثر بشكل مباشر على نتائج الأعمال.",
-                page3P5: "مع نظام كبير لتقاسم الأرباح، ما عليك سوى تحمل تكاليف الإعلان، بينما سيوجه فريقنا الاستراتيجيات لجعل عملك منتجًا وفعالًا ومرغوبًا للغاية - بحيث تنمو استثماراتك الرأسمالية إلى أرباح مضاعفة."
-            }
-        };
+            <a href="https://dev.elvisiongroup.com" class="link-card">
+                <div class="link-title">
+                    <span>Companies List</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="link-url">dev.elvisiongroup.com</div>
+            </a>
 
-        function toggleLanguageDropdown() {
-            const dropdown = document.getElementById('languageDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
+            <a href="https://export.elvisiongroup.com" class="link-card">
+                <div class="link-title">
+                    <span>Global Export</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="link-url">export.elvisiongroup.com</div>
+            </a>
 
-        function changeLanguage(lang) {
-            localStorage.setItem('language', lang);
-            updateContent(lang);
-            toggleLanguageDropdown();
-        }
+            <a href="https://app.elvisiongroup.com" class="link-card">
+                <div class="link-title">
+                    <span>Ecosystem</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="link-url">app.elvisiongroup.com</div>
+            </a>
 
-        function updateContent(lang) {
-            document.querySelectorAll('[data-key]').forEach(element => {
-                const key = element.getAttribute('data-key');
-                if (translations[lang] && translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
-            });
-            document.documentElement.lang = lang;
-            if (lang === 'ar') {
-                document.body.style.direction = 'rtl';
-            } else {
-                document.body.style.direction = 'ltr';
-            }
-        }
+            <a href="https://deepfaith.elvisiongroup.com" class="link-card">
+                <div class="link-title">
+                    <span>Deep Faith Project</span>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="link-url">deepfaith.elvisiongroup.com</div>
+            </a>
+        </div>
 
-        async function autoDetectLanguage() {
-            const savedLang = localStorage.getItem('language');
-            if (savedLang) {
-                return savedLang;
-            }
-
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                const country = data.country_code;
-
-                if (country === 'ID') {
-                    return 'id';
-                } else if (['SA', 'AE', 'EG', 'IQ', 'JO', 'KW', 'LB', 'OM', 'QA', 'SY', 'YE', 'DZ', 'BH', 'DJ', 'ER', 'LY', 'MA', 'MR', 'PS', 'SD', 'SO', 'SS', 'TN'].includes(country)) {
-                    return 'ar';
-                } else {
-                    return 'en';
-                }
-            } catch (error) {
-                console.error('Error detecting language:', error);
-                const browserLang = navigator.language.split('-')[0];
-                if (browserLang === 'id') return 'id';
-                if (browserLang === 'ar') return 'ar';
-                return 'en';
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', async () => {
-            createStars();
-            const lang = await autoDetectLanguage();
-            updateContent(lang);
-        });
-    </script>
+        <div class="ornament">✦ ✦ ✦</div>
+    </div>
 </body>
 </html>
